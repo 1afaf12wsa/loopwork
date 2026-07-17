@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "loopwork",
+      "runtimeExecutable": "F:\\Claude\\loopwork\\node_start.cmd",
+      "runtimeArgs": [],
+      "port": 3000
+    }
+  ]
+}
