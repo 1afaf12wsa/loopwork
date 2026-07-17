@@ -1,18 +1,33 @@
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const twilio = require('twilio');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_FILE = path.join(__dirname, 'data', 'waitlist.json');
+const BUSINESSES_FILE = path.join(__dirname, 'data', 'businesses.json');
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function ensureDataFile() {
-  const dir = path.dirname(DATA_FILE);
+const twilioClient = process.env.TWILIO_ACCOUNT_SID
+  ? twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN)
+  : null;
+
+function ensureDataFile(file) {
+  const dir = path.dirname(file);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  if (!fs.existsSync(DATA_FILE)) fs.writeFileSync(DATA_FILE, '[]', 'utf8');
+  if (!fs.existsSync(file)) fs.writeFileSync(file, '[]', 'utf8');
 }
-ensureDataFile();
+ensureDataFile(DATA_FILE);
+ensureDataFile(BUSINESSES_FILE);
+
+// Looks up which customer a Twilio number belongs to, so the same server
+// can run the missed-call agent for multiple businesses at once.
+function getBusinessByTwilioNumber(twilioNumber) {
+  const businesses = JSON.parse(fs.readFileSync(BUSINESSES_FILE, 'utf8'));
+  return businesses.find((b) => b.twilioNumber === twilioNumber);
+}
 
 // Signups are appended through a promise chain so concurrent requests
 // can't interleave reads/writes of the JSON file and clobber each other.
@@ -60,6 +75,56 @@ app.post('/api/waitlist', async (req, res) => {
     console.error('waitlist signup failed:', err);
     res.status(500).json({ ok: false, error: 'Something went wrong. Please try again.' });
   }
+});
+
+// Twilio posts webhooks as form-encoded data, and signs each request so we
+// can verify it actually came from Twilio and not a forged POST.
+const twilioForm = express.urlencoded({ extended: false });
+const validateTwilioRequest = twilio.webhook({ validate: Boolean(process.env.TWILIO_AUTH_TOKEN) });
+
+// Step 1: a call comes in to a business's Twilio number. Forward it to the
+// business's real phone. If nobody picks up within 20s, Twilio calls back
+// into /twilio/voice/status below with the outcome.
+app.post('/twilio/voice', twilioForm, validateTwilioRequest, (req, res) => {
+  const twiml = new twilio.twiml.VoiceResponse();
+  const business = getBusinessByTwilioNumber(req.body.To);
+
+  if (!business) {
+    twiml.say('This number is not set up yet. Goodbye.');
+    return res.type('text/xml').send(twiml.toString());
+  }
+
+  twiml.dial({ timeout: 20, action: '/twilio/voice/status', method: 'POST' }, business.forwardTo);
+  res.type('text/xml').send(twiml.toString());
+});
+
+// Step 2: the dial finished. If it wasn't answered, text the caller back
+// immediately and let the business owner know they missed a lead.
+// Voice TwiML has no verb for sending SMS (that's Messaging-webhook-only),
+// so both texts go out through the REST API instead, and the voice
+// response itself just ends the call quietly.
+app.post('/twilio/voice/status', twilioForm, validateTwilioRequest, async (req, res) => {
+  const twiml = new twilio.twiml.VoiceResponse();
+  const business = getBusinessByTwilioNumber(req.body.To);
+  const wasAnswered = req.body.DialCallStatus === 'completed';
+
+  if (business && !wasAnswered && twilioClient) {
+    const message =
+      business.textBackMessage ||
+      `Hey, sorry we missed your call! Someone from ${business.name} will get back to you shortly.`;
+    try {
+      await twilioClient.messages.create({ to: req.body.From, from: business.twilioNumber, body: message });
+      await twilioClient.messages.create({
+        to: business.forwardTo,
+        from: business.twilioNumber,
+        body: `Missed call from ${req.body.From}. We texted them back automatically.`,
+      });
+    } catch (err) {
+      console.error('failed to send missed-call texts:', err);
+    }
+  }
+
+  res.type('text/xml').send(twiml.toString());
 });
 
 app.listen(PORT, () => {
