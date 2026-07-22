@@ -7,7 +7,6 @@ const twilio = require('twilio');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_FILE = path.join(__dirname, 'data', 'waitlist.json');
-const BUSINESSES_FILE = path.join(__dirname, 'data', 'businesses.json');
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const twilioClient = process.env.TWILIO_ACCOUNT_SID
@@ -20,13 +19,23 @@ function ensureDataFile(file) {
   if (!fs.existsSync(file)) fs.writeFileSync(file, '[]', 'utf8');
 }
 ensureDataFile(DATA_FILE);
-ensureDataFile(BUSINESSES_FILE);
+
+// Customer config lives in an env var (BUSINESSES_JSON), not a file, because
+// Render's free tier wipes the local disk on every restart/redeploy — an
+// env var is the one thing that reliably survives that.
+function getBusinesses() {
+  try {
+    return JSON.parse(process.env.BUSINESSES_JSON || '[]');
+  } catch (err) {
+    console.error('BUSINESSES_JSON is not valid JSON:', err);
+    return [];
+  }
+}
 
 // Looks up which customer a Twilio number belongs to, so the same server
 // can run the missed-call agent for multiple businesses at once.
 function getBusinessByTwilioNumber(twilioNumber) {
-  const businesses = JSON.parse(fs.readFileSync(BUSINESSES_FILE, 'utf8'));
-  return businesses.find((b) => b.twilioNumber === twilioNumber);
+  return getBusinesses().find((b) => b.twilioNumber === twilioNumber);
 }
 
 // Signups are appended through a promise chain so concurrent requests

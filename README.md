@@ -33,13 +33,13 @@ This is the actual product: a Twilio number that forwards to a business's real p
 
 1. Sign up at [twilio.com](https://www.twilio.com) (you do this, not Claude, it needs your payment details).
 2. Get your **Account SID** and **Auth Token** from the Twilio Console dashboard.
-3. Copy `.env.example` to `.env` and fill in those two values. On Render, set them instead under the service's **Environment** tab (no `.env` file needed there).
+3. Locally: copy `.env.example` to `.env` and fill in those two values. On Render: set them under the service's **Environment** tab instead (no `.env` file needed there).
 
 ### Onboarding a new customer
 
 1. In the Twilio Console, buy a phone number in the customer's area code.
 2. Under that number's configuration, set **"A call comes in"** to a webhook pointing at `https://<your-deployed-url>/twilio/voice`, method POST.
-3. Add an entry to `data/businesses.json` (create the file with `[]` if it doesn't exist yet):
+3. Update the **`BUSINESSES_JSON`** environment variable (Render → service → Environment tab) with the full list of customers, including the new one:
 
 ```json
 [
@@ -56,7 +56,9 @@ This is the actual product: a Twilio number that forwards to a business's real p
 - `forwardTo` — the business owner's real cell/office number that calls should ring.
 - `textBackMessage` — optional; falls back to a generic message if omitted.
 
-That's it — no redeploy needed, the server reads this file on every call.
+Saving the environment variable makes Render restart the service automatically (takes under a minute) — no code changes or redeploy needed, just paste the updated array in.
+
+**Why an env var and not a file:** Render's free tier has no persistent disk — anything written to a file on the server gets wiped on every restart or redeploy. Environment variables are the one thing that reliably survives that, so customer config lives there instead.
 
 ### How it works
 

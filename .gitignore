@@ -1,4 +1,4 @@
 node_modules/
 data/waitlist.json
-data/businesses.json
 .env
+*.log
