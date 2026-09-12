@@ -3,213 +3,296 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loopwork — AI agents for your busywork</title>
-<meta name="description" content="Loopwork builds AI agents that run your repetitive workflows around the clock, so your team can focus on the work that needs a human. Join the waitlist.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>&%23x27F3;</text></svg>">
+<title>Loopwork — we turn your content into a book your audience buys</title>
+<meta name="description" content="Loopwork is a small publishing studio. We turn a creator's best content into a designed eBook, write it, design it and launch it at no upfront cost, and split the profit.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>&%23x1F4D5;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
-<div class="bg-glow" aria-hidden="true"></div>
-
 <header class="nav">
   <div class="nav-inner">
-    <a href="#" class="logo">
-      <span class="logo-mark">&#x27F3;</span>
+    <a href="#top" class="logo">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 28 28" width="24" height="24">
+          <rect x="3" y="7" width="14" height="18" rx="2" fill="#e0708f"/>
+          <rect x="8" y="3" width="15" height="18" rx="2" fill="#fffcf9" stroke="#3a2233" stroke-width="1.6"/>
+          <path d="M12 9h7M12 13h7M12 17h4" stroke="#3a2233" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </span>
       Loopwork
     </a>
     <nav class="nav-links">
-      <a href="#workflows">Use cases</a>
-      <a href="#how-it-works">How it works</a>
+      <a href="#how">How it works</a>
+      <a href="#get">What you get</a>
+      <a href="#fit">Is it for you</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a href="#waitlist" class="btn btn-small">Join waitlist</a>
+    <a href="#apply" class="btn btn-small">Get a free chapter</a>
   </div>
 </header>
 
-<main>
+<main id="top">
 
   <section class="hero">
-    <p class="eyebrow">Now building &mdash; early access opening soon</p>
-    <h1>Your busywork,<br><span class="gradient-text">on autopilot.</span></h1>
-    <p class="hero-sub">
-      Loopwork builds AI agents that run your repetitive workflows around the clock &mdash;
-      inbox triage, lead research, data entry, reporting &mdash; so your team can spend
-      time on the work that actually needs a human.
+    <div class="hero-copy">
+      <p class="eyebrow">A small publishing studio</p>
+      <h1>Your audience keeps asking <span class="rose">how you did that.</span> Sell them the answer.</h1>
+      <p class="hero-sub">
+        We turn your best content into a proper book. We write it, design it and launch it at no
+        upfront cost to you. You share it with your people and keep half the profit.
+      </p>
+
+      <form class="apply-form" novalidate>
+        <div class="field-website" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="text" name="handle" placeholder="@yourhandle" aria-label="Your handle" autocomplete="off">
+        <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" aria-label="Email address">
+        <button type="submit" class="btn"><span class="btn-label">Get a free chapter</span></button>
+      </form>
+      <p class="form-note">We write you one real chapter first, free. If it isn't good, you walk away.</p>
+
+      <ul class="trust">
+        <li>No upfront cost</li>
+        <li>You approve every page</li>
+        <li>Your content stays yours</li>
+      </ul>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="mock">
+        <div class="mock-cover">
+          <span class="mock-brand">Your name</span>
+          <span class="mock-title">The one thing<br>they keep<br>asking you</span>
+          <span class="mock-chip">Sample chapter</span>
+        </div>
+        <div class="mock-page">
+          <span class="mock-eyebrow">Chapter three</span>
+          <span class="mock-h">The method,<br>step by step</span>
+          <span class="line w90"></span><span class="line w80"></span><span class="line w85"></span>
+          <div class="mock-fig">
+            <svg viewBox="0 0 130 54" width="100%">
+              <rect x="6" y="34" width="60" height="12" rx="3" fill="#dfe8e9"/>
+              <rect x="10" y="26" width="52" height="9" rx="2" fill="#fff" stroke="#e2dcd8"/>
+              <rect x="16" y="17" width="38" height="10" rx="2" fill="#eb8fa8"/>
+              <circle cx="26" cy="22" r="2.2" fill="#fbe4ea"/><circle cx="36" cy="22" r="2.6" fill="#fbe4ea"/><circle cx="46" cy="22" r="2.2" fill="#fbe4ea"/>
+              <path d="M74 28 c10 -9, 22 -7, 28 2" stroke="#40604a" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="108" cy="32" r="3" fill="#40604a"/>
+            </svg>
+          </div>
+          <span class="line w75"></span><span class="line w60"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band-inner">
+      <p>
+        Every week you answer the same question in your comments. That question is a product, and
+        right now you are giving the answer away one reply at a time.
+      </p>
+    </div>
+  </section>
+
+  <section id="how" class="section">
+    <h2 class="section-title">How it works</h2>
+    <p class="section-sub">Four steps, and most of the work is ours.</p>
+
+    <ol class="steps">
+      <li>
+        <span class="step-n">1</span>
+        <h3>We read your last few months</h3>
+        <p>Your posts, captions and comments. We find the one problem your audience keeps coming
+          back to, and turn it into a book idea with a full outline.</p>
+      </li>
+      <li>
+        <span class="step-n">2</span>
+        <h3>You get a free chapter</h3>
+        <p>Before you commit to anything, we write and design one real chapter from your own
+          content, so you can judge the quality instead of taking our word for it.</p>
+      </li>
+      <li>
+        <span class="step-n">3</span>
+        <h3>We write and design the book</h3>
+        <p>First draft in about two weeks. You tell us what's wrong with it and we keep fixing
+          until it sounds like you. Nothing goes out without your yes.</p>
+      </li>
+      <li>
+        <span class="step-n">4</span>
+        <h3>We launch it and pay you monthly</h3>
+        <p>We handle the page, the checkout, the tax and the refunds. You share it with your
+          audience. You get a sales report and your half of the profit every month.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="get" class="section alt">
+    <h2 class="section-title">What you get</h2>
+    <p class="section-sub">One project, six things delivered.</p>
+
+    <div class="cards">
+      <article class="card">
+        <h3>A designed book</h3>
+        <p>Not a text document exported to PDF. Real typography, diagrams drawn for your
+          techniques, and space built for your photos.</p>
+      </article>
+      <article class="card">
+        <h3>A cover</h3>
+        <p>Designed around your work, so it looks worth paying for when it shows up in a story or
+          a link in bio.</p>
+      </article>
+      <article class="card">
+        <h3>A page that sells it</h3>
+        <p>One page written to turn a visitor into a buyer, with checkout wired up and ready for
+          your traffic.</p>
+      </article>
+      <article class="card">
+        <h3>Launch material</h3>
+        <p>Pages from the book cut into posts and stories, so promoting it is a copy and paste
+          rather than a second job.</p>
+      </article>
+      <article class="card">
+        <h3>Reports and payouts</h3>
+        <p>What sold, what it earned, what you're owed. Paid every month, without chasing.</p>
+      </article>
+      <article class="card">
+        <h3>A chapter that feeds your shop</h3>
+        <p>If you sell products, tools or services, the last chapter sends readers to them. The
+          book should grow what you already sell.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="fit" class="section">
+    <h2 class="section-title">Is it for you</h2>
+    <p class="section-sub">We would rather say no than waste your time.</p>
+
+    <div class="fit-grid">
+      <div class="fit-col yes">
+        <h3>This works when</h3>
+        <ul>
+          <li>You teach something, even if you never call it teaching</li>
+          <li>People ask how you did it, in comments and DMs</li>
+          <li>You sell physical things, or your time, or nothing at all yet</li>
+          <li>You post consistently to an audience that engages</li>
+        </ul>
+      </div>
+      <div class="fit-col no">
+        <h3>This does not work when</h3>
+        <ul>
+          <li>Your page is reposts, memes or pure entertainment</li>
+          <li>You already sell a course or book covering the same ground</li>
+          <li>Your followers come only to buy, never to learn</li>
+          <li>The subject is medical, legal or financial advice</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt split">
+    <div class="split-copy">
+      <h2 class="section-title">The deal, in plain words</h2>
+      <p>
+        You pay nothing, at any stage. We carry the writing, the design, the store and the admin.
+        When the book sells we split the profit down the middle, and that split is open to
+        discussion before we start.
+      </p>
+      <p>
+        Your content stays yours. The book is built from it and published with your approval, and
+        if you ever want out, it comes down.
+      </p>
+      <a href="#apply" class="btn">Get a free chapter</a>
+    </div>
+    <dl class="terms">
+      <div><dt>Your cost</dt><dd>Nothing, at any stage</dd></div>
+      <div><dt>Your share</dt><dd>50% of profit, negotiable</dd></div>
+      <div><dt>First draft</dt><dd>About two weeks</dd></div>
+      <div><dt>Approval</dt><dd>Yours, on every page</dd></div>
+      <div><dt>Rights</dt><dd>Your content stays yours</dd></div>
+      <div><dt>Getting out</dt><dd>Any time, the book comes down</dd></div>
+    </dl>
+  </section>
+
+  <section id="faq" class="section">
+    <h2 class="section-title">Questions</h2>
+
+    <div class="faq">
+      <details>
+        <summary>Who actually writes it?</summary>
+        <p>We do. We draft with AI tools, which is how we move fast and charge you nothing
+          upfront, then we edit every page by hand against your own posts. The expertise is yours
+          throughout, and nothing is published until you have read it and said yes.</p>
+      </details>
+      <details>
+        <summary>What does it cost me?</summary>
+        <p>Nothing. Not the writing, not the design, not the store. We only make money when the
+          book does, which is the same incentive you have.</p>
+      </details>
+      <details>
+        <summary>Who owns the book and my content?</summary>
+        <p>Your content stays yours, always. The book is published with your approval, and if you
+          want it taken down, it comes down.</p>
+      </details>
+      <details>
+        <summary>How and when do I get paid?</summary>
+        <p>Monthly, with a report showing what sold and what it earned. Half the profit is yours
+          by default, and we are happy to discuss the split before we start.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>A free sample chapter within a few days. A full first draft in about two weeks, then
+          however long your revisions take.</p>
+      </details>
+      <details>
+        <summary>What if I don't like it?</summary>
+        <p>Then it does not get published. That is why the first chapter is free and why nothing
+          moves without your approval. You are never committed to something you have not read.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="apply" class="section apply-band">
+    <h2 class="section-title">Let's see what your book would be</h2>
+    <p class="section-sub">
+      Send your handle. We'll read your last few months of posts, come back with a book idea and
+      an outline, and write you one chapter free.
     </p>
 
-    <form id="waitlist-form" class="waitlist-form" novalidate>
+    <form class="apply-form wide" novalidate>
       <div class="field-website" aria-hidden="true">
-        <label for="website">Website</label>
-        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        <label for="website2">Website</label>
+        <input type="text" id="website2" name="website" tabindex="-1" autocomplete="off">
       </div>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="you@company.com"
-        required
-        autocomplete="email"
-        aria-label="Email address"
-      >
-      <button type="submit" class="btn">
-        <span class="btn-label">Join the waitlist</span>
-      </button>
+      <input type="text" name="handle" placeholder="@yourhandle" aria-label="Your handle" autocomplete="off">
+      <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" aria-label="Email address">
+      <button type="submit" class="btn"><span class="btn-label">Get a free chapter</span></button>
     </form>
-    <p class="form-note" id="form-note">No spam. One email when we launch, and nothing before that.</p>
-
-    <p class="already-talked">
-      Already spoke to us about the missed-call text-back agent?
-      <a href="https://buy.stripe.com/aFa28re4xa5Gbj27WFcwg01" class="already-talked-link">Get started for $79/mo &rarr;</a>
-    </p>
-
-  </section>
-
-  <section class="workflows" id="workflows">
-    <h2>Built for the work nobody wants to do</h2>
-    <p class="section-sub">If it's repetitive, rule-based, or just tedious &mdash; there's a good chance a Loopwork agent can run it.</p>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon">&#x2709;</div>
-        <h3>Inbox &amp; ticket triage</h3>
-        <p>Sort, label, and draft replies to routine emails and support tickets before a human ever opens them.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">&#x1F50D;</div>
-        <h3>Lead research &amp; qualification</h3>
-        <p>Enrich new leads, score them against your criteria, and route the good ones straight to sales.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">&#x1F5C3;</div>
-        <h3>Data entry &amp; reconciliation</h3>
-        <p>Move data between spreadsheets, CRMs, and internal tools without the copy-paste.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">&#x1F4CA;</div>
-        <h3>Reporting &amp; summaries</h3>
-        <p>Pull numbers from your tools and turn them into a clean weekly report, automatically.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">&#x2699;</div>
-        <h3>Internal ops &amp; approvals</h3>
-        <p>Handle routine requests &mdash; access, onboarding, procurement &mdash; and escalate the exceptions.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">&#x1F4AC;</div>
-        <h3>Customer support triage</h3>
-        <p>Answer the questions you've answered a thousand times, and flag the ones that need you.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="how-it-works" id="how-it-works">
-    <h2>How it works</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Connect your tools</h3>
-        <p>Gmail, Slack, Sheets, your CRM, or any API. Loopwork plugs into what you already use.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Describe the workflow</h3>
-        <p>Tell it what to do in plain English. No flowcharts, no code.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>It runs, 24/7</h3>
-        <p>Your agent works continuously, with approval checkpoints wherever it matters.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="features">
-    <h2>Why teams are signing up</h2>
-    <div class="feature-list">
-      <div class="feature">
-        <h4>No-code agent builder</h4>
-        <p>Describe a workflow in plain language &mdash; Loopwork turns it into a running agent.</p>
-      </div>
-      <div class="feature">
-        <h4>Always on</h4>
-        <p>Agents run continuously in the background, not just when you remember to trigger them.</p>
-      </div>
-      <div class="feature">
-        <h4>Human-in-the-loop</h4>
-        <p>You decide what needs a sign-off. Anything risky waits for your approval.</p>
-      </div>
-      <div class="feature">
-        <h4>Full audit trail</h4>
-        <p>Every action an agent takes is logged, so you always know what happened and why.</p>
-      </div>
-      <div class="feature">
-        <h4>Connects to your stack</h4>
-        <p>Integrates with the tools your team already runs on &mdash; no rip-and-replace.</p>
-      </div>
-      <div class="feature">
-        <h4>Security-first</h4>
-        <p>Built with data privacy and access control as a foundation, not an afterthought.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-band" id="waitlist">
-    <h2>Be first in line</h2>
-    <p>We're opening early access in small batches. Join the waitlist to get in early.</p>
-    <form class="waitlist-form" data-secondary-form novalidate>
-      <div class="field-website" aria-hidden="true">
-        <label for="website-2">Website</label>
-        <input type="text" id="website-2" name="website" tabindex="-1" autocomplete="off">
-      </div>
-      <input
-        type="email"
-        name="email"
-        placeholder="you@company.com"
-        required
-        autocomplete="email"
-        aria-label="Email address"
-      >
-      <button type="submit" class="btn">
-        <span class="btn-label">Join the waitlist</span>
-      </button>
-    </form>
-    <p class="form-note" data-secondary-note>No spam. One email when we launch, and nothing before that.</p>
-  </section>
-
-  <section class="faq" id="faq">
-    <h2>Frequently asked questions</h2>
-    <details>
-      <summary>What exactly does Loopwork do?</summary>
-      <p>Loopwork lets you describe a repetitive workflow in plain English and turns it into an AI agent that runs it continuously &mdash; connecting to your existing tools instead of replacing them.</p>
-    </details>
-    <details>
-      <summary>Do I need to be technical to use it?</summary>
-      <p>No. Workflows are described in plain language. If you can explain the task to a new hire, you can set it up in Loopwork.</p>
-    </details>
-    <details>
-      <summary>Is my data safe?</summary>
-      <p>Security and access control are core to how Loopwork is built. You control exactly what each agent can see and do, and every action is logged.</p>
-    </details>
-    <details>
-      <summary>When can I get access?</summary>
-      <p>We're opening early access in small batches. Waitlist signups are reviewed in order, and we'll email you as soon as a spot opens up.</p>
-    </details>
-    <details>
-      <summary>What will it cost?</summary>
-      <p>Pricing hasn't been finalized. Waitlist members will be the first to hear the details before public launch.</p>
-    </details>
+    <p class="form-note">No cost and no commitment, and we will tell you honestly if we think a
+      book would not sell to your audience.</p>
   </section>
 
 </main>
 
 <footer class="footer">
   <div class="footer-inner">
-    <span class="logo footer-logo"><span class="logo-mark">&#x27F3;</span> Loopwork</span>
-    <p>&copy; 2026 Loopwork. All rights reserved.</p>
-    <a href="mailto:hello@loopwork.ai">hello@loopwork.ai</a>
+    <div>
+      <p class="foot-logo">Loopwork</p>
+      <p class="foot-note">
+        A small publishing studio run by Volodymyr Verbytskyi, based in Poland. We are new, and
+        happy to say so: our first books are in production now.
+      </p>
+    </div>
+    <div class="foot-contact">
+      <a href="mailto:volodumyr.ver@gmail.com">volodumyr.ver@gmail.com</a>
+      <a href="/agents.html" class="foot-quiet">Looking for our missed-call agent?</a>
+      <span>&copy; 2026 Loopwork</span>
+    </div>
   </div>
 </footer>
 
