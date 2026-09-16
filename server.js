@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const twilio = require('twilio');
+const { notifySignup } = require('./notify');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -79,6 +80,11 @@ app.post('/api/waitlist', async (req, res) => {
     };
 
     const result = await appendSignup(entry);
+    if (!result.duplicate) {
+      // Logged and emailed because the file above does not survive a Render restart.
+      console.log(`New signup: ${entry.email} ${entry.company}`);
+      await notifySignup(entry);
+    }
     res.json({ ok: true, position: result.position, duplicate: result.duplicate });
   } catch (err) {
     console.error('waitlist signup failed:', err);
