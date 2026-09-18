@@ -240,6 +240,9 @@ a { color: var(--rose-deep); }
 .foot-contact { display: flex; flex-direction: column; gap: 8px; font-size: 14px; text-align: right; }
 .foot-contact a { color: var(--rose-mid); text-decoration: none; }
 .foot-contact a:hover { color: #fff; }
+.foot-label { color: #9c8391; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
+.foot-social { display: inline-flex; align-items: center; gap: 7px; justify-content: flex-end; }
+.foot-social svg { flex: none; }
 .foot-quiet { opacity: .72; font-size: 13px; }
 .foot-contact span { color: #9c8391; font-size: 13px; }
 
@@ -259,4 +262,5 @@ a { color: var(--rose-deep); }
   .band p { font-size: 19px; }
   .footer-inner { flex-direction: column; }
   .foot-contact { text-align: left; }
+  .foot-social { justify-content: flex-start; }
 }
