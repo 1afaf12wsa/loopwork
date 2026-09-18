@@ -29,7 +29,7 @@ async function notifySignup(entry) {
 
   const handle = (entry.company || '').trim().replace(/^@/, '');
   const lines = [
-    'Someone asked for a free sample chapter on loopwork.onrender.com.',
+    'Someone asked for a free sample chapter on loopworkbooks.com.',
     '',
     `Handle: ${entry.company || '(not given)'}`,
     handle ? `Instagram: https://www.instagram.com/${encodeURIComponent(handle)}/` : null,
