@@ -57,7 +57,21 @@ function appendSignup(entry) {
 }
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+// Nothing here is user specific, so let Cloudflare and the browser hold onto it.
+// stale-while-revalidate matters most: a visitor gets the cached page instantly and
+// the refresh happens behind them, so a slow or cold origin is never what they wait for.
+app.use(
+  express.static(path.join(__dirname, 'public'), {
+    maxAge: '1h',
+    setHeaders(res, filePath) {
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+      } else {
+        res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+      }
+    },
+  })
+);
 
 app.post('/api/waitlist', async (req, res) => {
   try {
