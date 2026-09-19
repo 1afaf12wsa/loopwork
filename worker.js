@@ -1,9 +1,13 @@
-// Cloudflare Pages Function. Replaces the Express /api/waitlist route.
+// The whole site in one worker.
 //
-// Workers cannot open raw TCP, so there is no SMTP here. Email goes out over
-// Resend's HTTP API instead. Both the store and the email are optional: if a
-// binding or key is missing the visitor still gets a clean success, because
-// losing their signup silently is bad but showing them an error is worse.
+// Static files are served by Cloudflare from ./public without this code running
+// at all. The worker only wakes for the signup form, which is why there is no
+// cold start to notice.
+//
+// Workers cannot open raw TCP, so there is no SMTP here. The notification goes
+// over Resend's HTTP API. The store and the key are both optional: if either is
+// missing the visitor still gets a clean success, because losing a signup
+// quietly is bad but showing them an error is worse.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -57,7 +61,7 @@ async function sendNotification(env, entry) {
   }
 }
 
-export async function onRequestPost({ request, env }) {
+export async function handleWaitlist(request, env) {
   let body;
   try {
     body = await request.json();
@@ -67,7 +71,7 @@ export async function onRequestPost({ request, env }) {
 
   const { email, company, website } = body || {};
 
-  // Honeypot: hidden via CSS, so only a bot filling every field trips it.
+  // Honeypot: hidden with CSS, so only a bot filling every field trips it.
   // Answer as if it worked, so the bot has nothing to learn.
   if (website) return json({ ok: true, position: 0 });
 
@@ -100,8 +104,16 @@ export async function onRequestPost({ request, env }) {
   return json({ ok: true, duplicate });
 }
 
-// Anything other than POST on this path is a mistake, not a visitor.
-export const onRequest = async (context) =>
-  context.request.method === 'POST'
-    ? onRequestPost(context)
-    : new Response('Method not allowed', { status: 405 });
+export default {
+  async fetch(request, env) {
+    const { pathname } = new URL(request.url);
+
+    if (pathname === '/api/waitlist') {
+      return request.method === 'POST'
+        ? handleWaitlist(request, env)
+        : new Response('Method not allowed', { status: 405 });
+    }
+
+    return env.ASSETS.fetch(request);
+  },
+};

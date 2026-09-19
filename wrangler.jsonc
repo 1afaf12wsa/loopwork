@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "loopwork",
+  "main": "worker.js",
+  "compatibility_date": "2026-09-01",
+
+  // The site itself. Cloudflare serves everything in ./public straight from the
+  // edge and only reaches the worker below when no file matches the URL.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+
+  // Not secret, so they live here rather than in the dashboard, where a deploy
+  // could overwrite them. The Resend key is a secret and is set separately.
+  "vars": {
+    "NOTIFY_EMAIL": "loopworkinfos@gmail.com",
+    "NOTIFY_FROM": "Loopwork website <hello@loopworkbooks.com>"
+  }
+
+  // Duplicate detection is optional. To switch it on, create a KV namespace and
+  // add its id here, then redeploy:
+  // "kv_namespaces": [{ "binding": "SIGNUPS", "id": "paste-the-id-here" }]
+}
