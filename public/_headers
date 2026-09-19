@@ -1,0 +1,19 @@
+# Cloudflare Pages reads this file. It replaces the cache headers Express used
+# to set, and is why a visitor never waits on an origin.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Pages are cached at the edge but revalidated behind the visitor, so an edit
+# reaches people within the minute without anyone waiting for it.
+/
+  Cache-Control: public, max-age=60, stale-while-revalidate=86400
+/*.html
+  Cache-Control: public, max-age=60, stale-while-revalidate=86400
+
+# These change only on deploy, and Pages purges the edge on every deploy.
+/styles.css
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
+/script.js
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
