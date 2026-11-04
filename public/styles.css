@@ -103,6 +103,7 @@ a { color: var(--rose-deep); }
 .form-note { font-size: 13.5px; color: var(--soft); margin: 12px 0 0; }
 .form-note.is-success { color: var(--sage-ink); font-weight: 500; }
 .form-note.is-error { color: #c0392b; }
+.hero-proof { font-size: 13.5px; color: var(--soft); margin: 6px 0 0; }
 
 .trust { list-style: none; display: flex; flex-wrap: wrap; gap: 18px; padding: 0; margin: 26px 0 0; }
 .trust li { font-size: 13.5px; color: var(--soft); display: flex; align-items: center; gap: 7px; }
