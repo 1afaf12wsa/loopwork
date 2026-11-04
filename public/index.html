@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Loopwork — we turn your content into a book your audience buys</title>
-<meta name="description" content="Loopwork is a small publishing studio. We turn a creator's best content into a designed eBook. Pay nothing upfront and split every sale 50/50, or pay a one-time $199 and keep every sale.">
+<meta name="description" content="Loopwork is a small publishing studio. We turn a creator's best content into a designed eBook. Pay a one-time $199 and keep every sale, or pay nothing upfront and split sales 50/50.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>&%23x1F4D5;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://loopworkbooks.com/">
 <meta property="og:title" content="Loopwork, we turn your content into a book your audience buys">
-<meta property="og:description" content="A small publishing studio. We write, design and launch an eBook from your own content. Pay nothing upfront and keep half of every sale, or pay a one-time $199 and keep it all.">
+<meta property="og:description" content="A small publishing studio. We write, design and launch an eBook from your own content. Pay a one-time $199 and keep every sale, or pay nothing upfront and keep half.">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="/styles.css">
 </head>
@@ -33,7 +33,8 @@
     </a>
     <nav class="nav-links">
       <a href="#how">How it works</a>
-      <a href="#get">What you get</a>
+      <a href="#inside">See a book</a>
+      <a href="#deal">The deal</a>
       <a href="#fit">Is it for you</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -48,8 +49,8 @@
       <p class="eyebrow">A small publishing studio</p>
       <h1>Your audience keeps asking <span class="rose">how you did that.</span><span class="h1-turn">Sell them the answer.</span></h1>
       <p class="hero-sub">
-        A small studio that turns your posts into a finished book. Pay nothing upfront and keep
-        half of every sale, or pay a one-time $199 and keep all of it. You approve every page.
+        A small studio that turns your posts into a finished book. Pay a one-time $199 and keep
+        every sale, or pay nothing upfront and keep half. You approve every page.
       </p>
 
       <form class="apply-form" novalidate>
@@ -57,12 +58,11 @@
           <label for="website">Website</label>
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
         </div>
-        <input type="text" name="handle" placeholder="@yourhandle" aria-label="Your handle" autocomplete="off">
-        <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" aria-label="Email address">
+        <div class="field"><label for="hero-handle">Instagram handle</label><input type="text" id="hero-handle" name="handle" placeholder="@yourhandle" autocomplete="off"></div>
+        <div class="field"><label for="hero-email">Email</label><input type="email" id="hero-email" name="email" placeholder="you@email.com" required autocomplete="email"></div>
         <button type="submit" class="btn"><span class="btn-label">Get a free chapter</span></button>
       </form>
-      <p class="form-note">We write you one real chapter first, free. If it isn't good, you walk away.</p>
-      <p class="hero-proof">Our first book is out: <a href="https://whop.com/loopworkbooks/the-overtired-dog">The Overtired Dog</a> by dog trainer Kris Downey.</p>
+      <p class="form-note">We write you one real chapter first, free. If it isn't good, you walk away. We only use your email to reply about your book. <a href="/privacy.html">Privacy</a></p>
 
       <ul class="trust">
         <li>First chapter free</li>
@@ -71,30 +71,12 @@
       </ul>
     </div>
 
-    <div class="hero-art" aria-hidden="true">
-      <div class="mock">
-        <div class="mock-cover">
-          <span class="mock-brand">Your name</span>
-          <span class="mock-title">The one thing<br>they keep<br>asking you</span>
-          <span class="mock-chip">Sample chapter</span>
-        </div>
-        <div class="mock-page">
-          <span class="mock-eyebrow">Chapter three</span>
-          <span class="mock-h">The method,<br>step by step</span>
-          <span class="line w90"></span><span class="line w80"></span><span class="line w85"></span>
-          <div class="mock-fig">
-            <svg viewBox="0 0 130 54" width="100%">
-              <rect x="6" y="34" width="60" height="12" rx="3" fill="#dfe8e9"/>
-              <rect x="10" y="26" width="52" height="9" rx="2" fill="#fff" stroke="#e2dcd8"/>
-              <rect x="16" y="17" width="38" height="10" rx="2" fill="#eb8fa8"/>
-              <circle cx="26" cy="22" r="2.2" fill="#fbe4ea"/><circle cx="36" cy="22" r="2.6" fill="#fbe4ea"/><circle cx="46" cy="22" r="2.2" fill="#fbe4ea"/>
-              <path d="M74 28 c10 -9, 22 -7, 28 2" stroke="#40604a" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <circle cx="108" cy="32" r="3" fill="#40604a"/>
-            </svg>
-          </div>
-          <span class="line w75"></span><span class="line w60"></span>
-        </div>
-      </div>
+    <div class="hero-art">
+      <a class="book-stack" href="https://whop.com/loopworkbooks/the-overtired-dog">
+        <img class="book-page" src="img/book-ch2.jpg" width="667" height="1000" alt="Chapter two of The Overtired Dog, with a photo of a woman and her dog by a lake">
+        <img class="book-cover" src="img/book-cover.jpg" width="667" height="1000" alt="Cover of The Overtired Dog by Kris Downey">
+      </a>
+      <p class="book-caption">Real pages from our first book, <a href="https://whop.com/loopworkbooks/the-overtired-dog">The Overtired Dog</a> by dog trainer Kris Downey.</p>
     </div>
   </section>
 
@@ -127,8 +109,7 @@
       <li>
         <span class="step-n">3</span>
         <h3>We write and design the book</h3>
-        <p>First draft in about two weeks. You tell us what's wrong with it and we keep fixing
-          until it sounds like you. Nothing goes out without your yes.</p>
+        <p>First draft in about two weeks. You review it in rounds, and nothing goes out without your yes.</p>
       </li>
       <li>
         <span class="step-n">4</span>
@@ -138,6 +119,60 @@
           you are never waiting on us to pay you.</p>
       </li>
     </ol>
+  </section>
+
+  <section id="inside" class="section alt">
+    <div class="inside-grid">
+      <div class="inside-copy">
+        <h2 class="section-title">See a real one</h2>
+        <p class="section-sub left">Our first book, The Overtired Dog, is on sale now. It's Kris Downey's advice in her own words, with her own photos, turned into a designed book.</p>
+        <a class="text-link" href="https://whop.com/loopworkbooks/the-overtired-dog">See the book on Whop</a>
+        <div class="founder">
+          <h3>Who's behind it</h3>
+          <p>I'm Volodymyr Verbytskyi, and I run Loopwork from Poland. We're new, and happy to say so. We draft with AI tools, then edit every page by hand against your own posts. Nothing goes out until you say yes.</p>
+        </div>
+      </div>
+      <div class="inside-pages">
+        <a href="img/book-ch3.jpg"><img src="img/book-ch3.jpg" width="667" height="1000" loading="lazy" alt="Chapter three opener, with a photo of a dog asleep on a raised bed"></a>
+        <a href="img/book-words.jpg"><img src="img/book-words.jpg" width="667" height="1000" loading="lazy" alt="Inside page with a quote from Kris Downey and her photo of a dog resting"></a>
+        <a href="img/book-ch7.jpg"><img src="img/book-ch7.jpg" width="667" height="1000" loading="lazy" alt="Chapter seven opener, with a photo of a dog running across grass"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="deal" class="section">
+    <h2 class="section-title">The deal, in plain words</h2>
+    <p class="section-sub">Two ways to do it. The first chapter is free either way, so you can decide after you've read it.</p>
+    <div class="deals">
+      <article class="deal deal-best">
+        <p class="deal-badge">Best value</p>
+        <h3>Own it outright</h3>
+        <p class="deal-price">$199 <span>once, per book</span></p>
+        <p class="deal-line">Pay once, and every sale after that is yours.</p>
+        <dl>
+          <div><dt>You keep</dt><dd>100% of each sale, after store fees</dd></div>
+          <div><dt>Pays back</dt><dd>After about 12 sales of a $19 book</dd></div>
+          <div><dt>You pay</dt><dd>Half when you start, half when you approve it</dd></div>
+          <div><dt>Changes</dt><dd>Two rounds, plus a typo check</dd></div>
+          <div><dt>The book</dt><dd>All yours once paid, to sell or give away anywhere</dd></div>
+        </dl>
+      </article>
+      <article class="deal">
+        <h3>Share the sales</h3>
+        <p class="deal-price">$0 <span>upfront</span></p>
+        <p class="deal-line">No risk upfront, and we share what it earns.</p>
+        <dl>
+          <div><dt>You keep</dt><dd>50% of each sale, after store fees</dd></div>
+          <div><dt>You pay</dt><dd>Nothing. We only earn when the book sells</dd></div>
+          <div><dt>Changes</dt><dd>Three review rounds, plus a final check</dd></div>
+          <div><dt>The book</dt><dd>It's your book, sold through our shared page while we work together</dd></div>
+        </dl>
+      </article>
+    </div>
+    <p class="deal-note">Both include the writing, the design, the cover, a page to sell it and launch posts, and you approve every page. Sales run through Whop: your share goes to your own Whop balance, and you withdraw it when you like.</p>
+    <p class="deal-note"><strong>The math on a $19 book:</strong> you keep about $17.80 a sale with the $199, against about $8.90 on the 50/50 deal. From about the 23rd sale on, the $199 leaves you further ahead with every sale.</p>
+    <p class="deal-note">The $199 price is for your first 3 books if you start by 31 December 2026. From 1 January 2027 it's $290 a book.</p>
+    <a href="#apply" class="btn deal-cta">Get a free chapter</a>
   </section>
 
   <section id="get" class="section alt">
@@ -204,39 +239,7 @@
     </div>
   </section>
 
-  <section class="section alt split">
-    <div class="split-copy">
-      <h2 class="section-title">The deal, in plain words</h2>
-      <p>
-        There are two ways to do it, and the first chapter is free either way.
-      </p>
-      <p>
-        <strong>Share the sales.</strong> You pay nothing upfront. We carry the writing, the design,
-        the store and the admin. When the book sells we split each sale down the middle after store
-        fees, and that split is open to discussion before we start.
-      </p>
-      <p>
-        <strong>Own it outright.</strong> A one-time $199 per book, half when you start and half when
-        you approve it. You keep every sale after store fees. That price is for your first 3 books if
-        you start by 31 December. From January it's $290 a book.
-      </p>
-      <p>
-        Your content stays yours. The book is built from it and published with your approval, and
-        if you ever want out, it comes down.
-      </p>
-      <a href="#apply" class="btn">Get a free chapter</a>
-    </div>
-    <dl class="terms">
-      <div><dt>Your cost</dt><dd>Nothing upfront, or a one-time $199</dd></div>
-      <div><dt>Your share</dt><dd>50% of each sale, or 100%</dd></div>
-      <div><dt>First draft</dt><dd>About two weeks</dd></div>
-      <div><dt>Approval</dt><dd>Yours, on every page</dd></div>
-      <div><dt>Rights</dt><dd>Your content stays yours</dd></div>
-      <div><dt>Getting out</dt><dd>Any time, the book comes down</dd></div>
-    </dl>
-  </section>
-
-  <section id="faq" class="section">
+    <section id="faq" class="section alt">
     <h2 class="section-title">Questions</h2>
 
     <div class="faq">
@@ -248,21 +251,15 @@
       </details>
       <details>
         <summary>What does it cost me?</summary>
-        <p>You choose. Pay nothing upfront and we split each sale 50/50, so we only make money when
-          the book does. Or pay a one-time $199 per book, half when you start and half when you
-          approve it, and keep every sale. The $199 price is for your first 3 books if you start by
-          31 December. From January it's $290 a book.</p>
+        <p>The one-time $199 a book is our pick: you pay once and keep every sale. If you'd rather pay nothing upfront, we split each sale 50/50 instead. The first chapter is free either way, so you can read it before you choose.</p>
       </details>
       <details>
         <summary>Who owns the book and my content?</summary>
-        <p>Your content stays yours, always. The book is published with your approval, and if you
-          want it taken down, it comes down.</p>
+        <p>Your content stays yours, always, and the finished book is your book. On the 50/50 deal it sells through our shared page while we work together, and if you want out, it comes down. With the $199 it's all yours once paid.</p>
       </details>
       <details>
         <summary>How and when do I get paid?</summary>
-        <p>On every sale, automatically. The store sends your share straight to your own balance, so you
-          withdraw it whenever you like without asking us. Your share is half of each sale by
-          default, or all of it if you pay the $199. We are happy to discuss the split before we start.</p>
+        <p>On every sale, automatically. Whop, the store, puts your share straight into your own Whop balance, and you withdraw it to your bank whenever you like without asking us. Your share is all of each sale with the $199, or half on the 50/50 deal. We are happy to discuss the split before we start.</p>
       </details>
       <details>
         <summary>How long does it take?</summary>
@@ -291,12 +288,12 @@
         <label for="website2">Website</label>
         <input type="text" id="website2" name="website" tabindex="-1" autocomplete="off">
       </div>
-      <input type="text" name="handle" placeholder="@yourhandle" aria-label="Your handle" autocomplete="off">
-      <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" aria-label="Email address">
+      <div class="field"><label for="apply-handle">Instagram handle</label><input type="text" id="apply-handle" name="handle" placeholder="@yourhandle" autocomplete="off"></div>
+      <div class="field"><label for="apply-email">Email</label><input type="email" id="apply-email" name="email" placeholder="you@email.com" required autocomplete="email"></div>
       <button type="submit" class="btn"><span class="btn-label">Get a free chapter</span></button>
     </form>
     <p class="form-note">No cost and no commitment, and we will tell you honestly if we think a
-      book would not sell to your audience.</p>
+      book would not sell to your audience. We only use your email to reply about your book. <a href="/privacy.html">Privacy</a></p>
     </div>
 
     <aside class="apply-next" aria-label="What happens after you send it">
@@ -330,9 +327,10 @@
       <p class="foot-logo">Loopwork</p>
       <p class="foot-note">
         A small publishing studio run by Volodymyr Verbytskyi, based in Poland. We are new, and
-        happy to say so: our first books are in production now.
+        happy to say so: our first book is on sale and more are in production.
       </p>
-      <a class="foot-mail" href="mailto:loopworkinfos@gmail.com">loopworkinfos@gmail.com</a>
+      <a class="foot-mail" href="mailto:hello@loopworkbooks.com">hello@loopworkbooks.com</a>
+      <a class="foot-mail foot-privacy" href="/privacy.html">Privacy</a>
     </div>
     <div class="foot-contact">
       <span class="foot-label">Our socials</span>
