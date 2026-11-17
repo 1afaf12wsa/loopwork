@@ -1,7 +1,7 @@
 :root {
-  --cream: #fffcf9;
+  --cream: #f6eee6;
   --paper: #ffffff;
-  --sand: #f8f1ea;
+  --sand: #ede1d6;
   --plum: #3a2233;
   --ink: #2c1f2a;
   --soft: #7b6a76;
@@ -11,7 +11,7 @@
   --rose-mid: #f3bccb;
   --sage: #dfe9e0;
   --sage-ink: #40604a;
-  --line: #efe3e8;
+  --line: #e6d8d6;
   --radius: 14px;
   --max-width: 1120px;
   color-scheme: light;
@@ -36,7 +36,7 @@ a { color: var(--rose-deep); }
 /* ---------- nav ---------- */
 .nav {
   position: sticky; top: 0; z-index: 20;
-  background: rgba(255, 252, 249, .88);
+  background: rgba(246, 238, 230, .9);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -259,6 +259,8 @@ a { color: var(--rose-deep); }
 .inside-pages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .inside-pages img { display: block; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 26px rgba(90, 50, 70, .16); }
 .text-link { font-weight: 600; }
+.proof { margin: 26px 0 0; padding: 14px 18px; background: var(--paper); border-left: 3px solid var(--rose); border-radius: 0 var(--radius) var(--radius) 0; font-size: 15.5px; color: #5d4b57; }
+.proof strong { color: var(--plum); }
 .founder { margin-top: 30px; padding-top: 24px; border-top: 1px solid #e8dcd3; }
 .founder h3 { font-size: 19px; margin: 0 0 8px; color: var(--plum); }
 .founder p { margin: 0; font-size: 15.5px; color: #5d4b57; }
