@@ -386,16 +386,13 @@ a { color: var(--rose-deep); }
   .desk-only { display: none; }
 }
 
-/* the "in production" stack: three real photos (tied, half untied, untied) that cross-fade slowly on hover */
-.stack { width: 21.4cqw; transform: translateX(-50%); z-index: 2; margin-bottom: -.35cqw; filter: drop-shadow(0 4px 5px rgba(70, 40, 10, .35)); }
-.stack img { display: block; width: 100%; height: auto; }
-.stack .f2, .stack .f3 { position: absolute; left: 0; top: 0; opacity: 0; }
-.stack .f3 { transition: opacity .5s ease; }
-.stack .f2 { transition: opacity .8s ease .35s; }
-.stack:hover .f2, .stack.is-open .f2 { opacity: 1; transition: opacity 1.2s ease; }
-.stack:hover .f3, .stack.is-open .f3 { opacity: 1; transition: opacity 1.5s ease 1.4s; }
-@media (max-width: 600px) { .stack { width: 34.8cqw; } }
-@media (prefers-reduced-motion: reduce) { .stack img { transition: none !important; } }
+/* the "in production" stack lives in the photo; on hover a clip of its twine untying plays in place (reverses on leave) */
+.untie { position: absolute; left: var(--vx); top: var(--vy); width: var(--vw); height: var(--vh); z-index: 2;
+  -webkit-mask-image: radial-gradient(ellipse 60% 64% at 50% 47%, #000 72%, transparent 100%);
+          mask-image: radial-gradient(ellipse 60% 64% at 50% 47%, #000 72%, transparent 100%); }
+.untie video { display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .2s ease; }
+.untie.on video { opacity: 1; }
+@media (max-width: 600px) { .untie { left: var(--mvx); top: var(--mvy); width: var(--mvw); height: var(--mvh); } }
 @media (hover: none) {
   .b3-body { transform: rotateY(22deg); }
 }
