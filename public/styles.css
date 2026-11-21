@@ -316,7 +316,8 @@ a { color: var(--rose-deep); }
 .shelf-section .section-sub { margin-left: auto; margin-right: auto; }
 .shelf-hint { font-size: 13.5px; color: var(--soft); margin: 18px 0 0; }
 
-.bookcase { position: relative; max-width: 1060px; margin: 0 auto; container-type: inline-size; border-radius: 4px; --k: 1; --lab: 1.15cqw;
+.bookcase { position: relative; width: min(1440px, calc(100vw - 48px)); left: 50%; margin: 0 0 0 calc(min(1440px, calc(100vw - 48px)) / -2);
+  container-type: inline-size; border-radius: 4px; --k: 1; --lab: 1.05cqw;
   box-shadow: 0 30px 60px -24px rgba(90, 60, 30, .45), 0 8px 20px rgba(90, 60, 30, .15); }
 .bookcase-photo, .bookcase-photo img { display: block; width: 100%; height: auto; border-radius: 4px; }
 .empty, .book3d, .untie { position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--h); }
@@ -380,7 +381,7 @@ a { color: var(--rose-deep); }
 .untie.on video { opacity: 1; }
 
 @media (max-width: 600px) {
-  .bookcase { --k: 1.6254; }
+  .bookcase { --k: 1.6254; width: 100%; left: 0; margin: 0; }
   .empty, .book3d, .untie { left: var(--mx); top: var(--my); width: var(--mw); height: var(--mh); }
   .slot-label { left: var(--mx); top: var(--my); font-size: 9px; padding: 2px 6px; letter-spacing: 0; }
   .slot-label .lt { display: none; }
