@@ -304,3 +304,26 @@ a { color: var(--rose-deep); }
   .foot-social { justify-content: flex-start; }
   .apply-grid { grid-template-columns: 1fr; gap: 32px; }
 }
+
+/* ---------- books page (21 Nov) ---------- */
+.nav-links a[aria-current="page"] { color: var(--plum); }
+.books-head { padding-bottom: 10px; }
+.books-head .section-sub { margin-bottom: 0; }
+.books-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; padding-top: 30px; }
+.book-card { display: grid; grid-template-columns: 170px 1fr; gap: 22px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; align-items: start; }
+.book-card-cover img { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 12px 28px rgba(90, 50, 70, .18); }
+.book-card-body h2 { font-size: 23px; color: var(--plum); margin: 2px 0 4px; line-height: 1.2; }
+.book-card-by { font-size: 14px; color: var(--soft); margin: 0 0 12px; }
+.book-card-body p { font-size: 15px; margin: 0 0 14px; }
+.book-card-buy { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+.book-card-price { font-family: 'Fraunces', Georgia, serif; font-size: 24px; font-weight: 600; color: var(--plum); }
+.books-cta { padding-top: 40px; }
+.books-cta .section-sub { margin-bottom: 22px; }
+.foot-books { display: block; margin-top: 6px; }
+@media (max-width: 900px) {
+  .books-list { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .book-card { grid-template-columns: 1fr; }
+  .book-card-cover { max-width: 220px; }
+}
