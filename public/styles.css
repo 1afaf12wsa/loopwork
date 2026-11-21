@@ -316,9 +316,10 @@ a { color: var(--rose-deep); }
 .shelf-section .section-sub { margin-left: auto; margin-right: auto; }
 .shelf-hint { font-size: 13.5px; color: var(--soft); margin: 18px 0 0; }
 
-.bookcase { position: relative; max-width: 860px; margin: 0 auto; container-type: inline-size; border-radius: 4px;
+.bookcase { position: relative; max-width: 1060px; margin: 0 auto; container-type: inline-size; border-radius: 4px;
   box-shadow: 0 30px 60px -24px rgba(90, 60, 30, .45), 0 8px 20px rgba(90, 60, 30, .15);
-  --bw: 10.7cqw; --bh: 16.1cqw; --bt: 2cqw; --lab: 1.25cqw; }
+  --bw: 11.2cqw; --bh: 16.8cqw; --bt: 2.1cqw; --lab: 1.15cqw; }
+.book3d.yours { --w: 10.4cqw; --h: 15.6cqw; }
 .bookcase-photo, .bookcase-photo img { display: block; width: 100%; height: auto; border-radius: 4px; }
 .slot { position: absolute; left: var(--x); bottom: var(--y); transform: translateX(-50%); }
 .slot-label { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); white-space: nowrap; z-index: 6;
@@ -332,7 +333,7 @@ a { color: var(--rose-deep); }
 .book3d:hover, .book3d:focus-visible, .book3d.is-open { z-index: 8; outline: none; }
 .book3d::after { content: ""; position: absolute; left: -18%; right: -6%; bottom: -3%; height: 7%; background: radial-gradient(ellipse at center, rgba(70, 40, 10, .45), transparent 70%); z-index: -1; }
 .b3-body { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateY(34deg); transform-origin: 50% 100%; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
-.book3d:hover .b3-body, .book3d:focus-visible .b3-body, .book3d.is-open .b3-body { transform: rotateY(0deg) translateZ(30px) scale(1.4); }
+.book3d:hover .b3-body, .book3d:focus-visible .b3-body, .book3d.is-open .b3-body { transform: rotateY(0deg) translateZ(30px) scale(1.3); }
 .b3-page, .b3-cover, .b3-front, .b3-inner, .b3-back { position: absolute; inset: 0; width: 100%; height: 100%; }
 .b3-page { transform: translateZ(-1px); object-fit: cover; border-radius: 0 2px 2px 0; box-shadow: inset 6px 0 10px rgba(0,0,0,.1); }
 .b3-cover { transform-origin: left center; transform-style: preserve-3d; transition: transform .8s .12s cubic-bezier(.3, .6, .2, 1); }
@@ -372,7 +373,8 @@ a { color: var(--rose-deep); }
 .yours-page span { font-size: calc(var(--w) * .085); font-weight: 700; color: #b5446a; }
 
 @media (max-width: 600px) {
-  .bookcase { --bw: 17.5cqw; --bh: 26.2cqw; --bt: 3.2cqw; --lab: 2.4cqw; }
+  .bookcase { --bw: 18.2cqw; --bh: 27.3cqw; --bt: 3.3cqw; --lab: 2.4cqw; }
+  .book3d.yours { --w: 16.9cqw; --h: 25.4cqw; }
   .slot { left: var(--mx); bottom: var(--my); }
   .slot-label { left: var(--mx); top: var(--my); font-size: 9px; padding: 2px 6px; letter-spacing: 0; }
   .slot-label .lt { display: none; }
