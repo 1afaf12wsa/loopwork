@@ -386,26 +386,16 @@ a { color: var(--rose-deep); }
   .desk-only { display: none; }
 }
 
-/* the "in production" stack: its twine bow slowly loosens on hover */
-.stack { width: 20.5cqw; transform: translateX(-50%); z-index: 2; }
-.stack img { display: block; width: 100%; height: auto; filter: drop-shadow(0 4px 5px rgba(70, 40, 10, .35)); }
-.twine { position: absolute; left: 0; top: -28.26%; width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 1.5px 1px rgba(40, 20, 5, .45)); }
-.twine .tw { fill: none; stroke: #a47b47; stroke-width: 12; stroke-linecap: round; }
-.twine .tw-hi { fill: none; stroke: #e0c28c; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 5 7; opacity: .85; }
-.twine path { transition: d 2.4s cubic-bezier(.4, .1, .2, 1); }
-.twine .loop { transform-box: view-box; transform-origin: 407px 66px; transition: transform 2.4s cubic-bezier(.4, .1, .2, 1); }
-.twine .knot { fill: #94703f; transform-box: view-box; transform-origin: 407px 66px; transition: transform 2.4s; }
-.stack:hover .loop-l, .stack.is-open .loop-l { transform: rotate(-26deg) scale(1.16); }
-.stack:hover .loop-r, .stack.is-open .loop-r { transform: rotate(38deg) scale(.82) translate(6px, 10px); }
-.stack:hover .knot, .stack.is-open .knot { transform: scale(.85); }
-.stack:hover .tw-top, .stack.is-open .tw-top { d: path('M407,118 C399,88 415,44 404,14'); }
-.stack:hover .tw-front, .stack.is-open .tw-front { d: path('M407,118 C421,215 393,350 411,452'); }
-.stack:hover .tw-flat, .stack.is-open .tw-flat { d: path('M18,68 C250,76 560,58 797,70'); }
-.stack:hover .tw-band, .stack.is-open .tw-band { d: path('M14,284 C250,298 560,274 801,288'); }
-.stack:hover .tw-tail-l, .stack.is-open .tw-tail-l { d: path('M407,66 C372,140 332,206 300,268'); }
-.stack:hover .tw-tail-r, .stack.is-open .tw-tail-r { d: path('M407,66 C440,150 468,232 482,304'); }
-@media (max-width: 600px) { .stack { width: 33.3cqw; } }
-@media (prefers-reduced-motion: reduce) { .twine path, .twine .loop, .twine .knot { transition: none; } }
+/* the "in production" stack: three real photos (tied, half untied, untied) that cross-fade slowly on hover */
+.stack { width: 21.4cqw; transform: translateX(-50%); z-index: 2; margin-bottom: -.35cqw; filter: drop-shadow(0 4px 5px rgba(70, 40, 10, .35)); }
+.stack img { display: block; width: 100%; height: auto; }
+.stack .f2, .stack .f3 { position: absolute; left: 0; top: 0; opacity: 0; }
+.stack .f3 { transition: opacity .5s ease; }
+.stack .f2 { transition: opacity .8s ease .35s; }
+.stack:hover .f2, .stack.is-open .f2 { opacity: 1; transition: opacity 1.2s ease; }
+.stack:hover .f3, .stack.is-open .f3 { opacity: 1; transition: opacity 1.5s ease 1.4s; }
+@media (max-width: 600px) { .stack { width: 34.8cqw; } }
+@media (prefers-reduced-motion: reduce) { .stack img { transition: none !important; } }
 @media (hover: none) {
   .b3-body { transform: rotateY(22deg); }
 }
