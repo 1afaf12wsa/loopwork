@@ -51,7 +51,7 @@ TERMS = '''
 
   <h2 id="share">5. Share the sales (no upfront cost)</h2>
   <ul>
-    <li>You pay nothing. We write, design and launch the book, and we split net sales 50/50 from the first sale. During Black Week the split is 60/40 in your favour (section 7).</li>
+    <li>You pay nothing. We write, design and launch the book, and we split net sales 50/50 from the first sale. During Black Friday week the split is 60/40 in your favour (section 7).</li>
     <li>"Net sales" means what buyers pay, minus sales tax or VAT where it applies, card and platform fees, refunds and chargebacks.</li>
     <li>The book sells through our shared Whop page. Whop splits each sale automatically and puts your share into your own Whop balance, which you can withdraw whenever you like.</li>
     <li>You get three review rounds plus a final check.</li>
@@ -61,14 +61,14 @@ TERMS = '''
 
   <h2 id="own">6. Own it outright (one-time fee)</h2>
   <ul>
-    <li>You pay a one-time fee per book and keep every sale, after store fees. The fee is $199 a book for your first 3 books if you start by 31 December 2026. From 1 January 2027 it is $290 a book. During Black Week it is $149 (section 7). We confirm your price in writing before you pay anything.</li>
+    <li>You pay a one-time fee per book and keep every sale, after store fees. The fee is $199 a book for your first 3 books if you start by 31 December 2026. From 1 January 2027 it is $290 a book. During Black Friday week it is $149 (section 7). We confirm your price in writing before you pay anything.</li>
     <li>You pay half when you start and half when you approve the finished book. Payments go through Whop.</li>
     <li>You get two review rounds plus a typo check.</li>
     <li>Once you have paid in full, the book is yours to sell or give away anywhere. We set up the sales page in your own Whop account and give you the final files.</li>
     <li>If you don't approve the book, you don't pay the second half, and we refund the first half (section 9).</li>
   </ul>
 
-  <h2 id="black-week">7. Black Week offer, until 30 November 2026</h2>
+  <h2 id="black-week">7. Black Friday week offer, until 30 November 2026</h2>
   <ul>
     <li><strong>Share the sales:</strong> you keep 60% of net sales and we keep 40%, for as long as that book sells with us.</li>
     <li><strong>Own it outright:</strong> $149 a book instead of $199.</li>
