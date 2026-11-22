@@ -50,3 +50,52 @@ function setupApplyForm(form) {
 }
 
 document.querySelectorAll('.apply-form').forEach(setupApplyForm);
+
+// Sample pages open in a lightbox on the page instead of a new tab.
+// Arrows / swipe move between pages; Esc, the X or a click outside closes it.
+(function setupLightbox() {
+  const links = [...document.querySelectorAll('.inside-pages a')];
+  if (!links.length || typeof HTMLDialogElement !== 'function') return;
+
+  const box = document.createElement('dialog');
+  box.className = 'lightbox';
+  box.innerHTML =
+    '<figure><img alt=""><figcaption></figcaption></figure>' +
+    '<button class="lb-close" type="button" aria-label="Close">&times;</button>' +
+    '<button class="lb-prev" type="button" aria-label="Previous page">&#8249;</button>' +
+    '<button class="lb-next" type="button" aria-label="Next page">&#8250;</button>';
+  document.body.appendChild(box);
+  const img = box.querySelector('img');
+  const count = box.querySelector('figcaption');
+  let i = 0;
+
+  function show(n) {
+    i = (n + links.length) % links.length;
+    const thumb = links[i].querySelector('img');
+    img.src = links[i].href;
+    img.alt = thumb ? thumb.alt : '';
+    count.textContent = (i + 1) + ' / ' + links.length;
+  }
+
+  links.forEach((a, n) => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    show(n);
+    box.showModal();
+  }));
+  box.querySelector('.lb-close').addEventListener('click', () => box.close());
+  box.querySelector('.lb-prev').addEventListener('click', () => show(i - 1));
+  box.querySelector('.lb-next').addEventListener('click', () => show(i + 1));
+  box.addEventListener('click', (e) => { if (e.target === box) box.close(); });
+  box.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') show(i - 1);
+    if (e.key === 'ArrowRight') show(i + 1);
+  });
+  let x0 = null;
+  box.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', (e) => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) show(dx < 0 ? i + 1 : i - 1);
+    x0 = null;
+  });
+})();

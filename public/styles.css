@@ -258,6 +258,25 @@ a { color: var(--rose-deep); }
 .inside-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
 .inside-pages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .inside-pages img { display: block; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 26px rgba(90, 50, 70, .16); }
+.inside-pages a { cursor: zoom-in; display: block; transition: transform .2s ease; }
+.inside-pages a:hover { transform: translateY(-3px); }
+
+/* Lightbox for the sample pages */
+.lightbox { border: 0; padding: 0; background: transparent; max-width: none; max-height: none; width: 100vw; height: 100dvh;
+  display: none; align-items: center; justify-content: center; overflow: hidden; }
+.lightbox[open] { display: flex; }
+.lightbox::backdrop { background: rgba(28, 16, 24, .86); }
+.lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: none; }
+.lightbox img { display: block; max-width: min(92vw, 720px); max-height: calc(100dvh - 90px); width: auto; height: auto;
+  border-radius: 4px; box-shadow: 0 20px 60px rgba(0, 0, 0, .45); pointer-events: auto; }
+.lightbox figcaption { color: #f6eee6; font-size: 14px; opacity: .8; }
+.lightbox button { position: absolute; border: 0; cursor: pointer; color: #fff; background: rgba(255, 255, 255, .12);
+  width: 48px; height: 48px; border-radius: 50%; font-size: 30px; line-height: 1; display: grid; place-items: center; }
+.lightbox button:hover { background: rgba(255, 255, 255, .24); }
+.lb-close { top: 16px; right: 16px; }
+.lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+@media (max-width: 640px) { .lb-prev, .lb-next { top: auto; bottom: 14px; transform: none; } .lightbox img { max-height: calc(100dvh - 140px); } }
 .text-link { font-weight: 600; }
 .proof { margin: 26px 0 0; padding: 14px 18px; background: var(--paper); border-left: 3px solid var(--rose); border-radius: 0 var(--radius) var(--radius) 0; font-size: 15.5px; color: #5d4b57; }
 .proof strong { color: var(--plum); }
