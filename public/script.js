@@ -108,6 +108,8 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
   const c = document.getElementById('earn-c');
   const customBox = c ? c.closest('.earn-custom') : null;
   const p = document.getElementById('earn-p');
+  const pc = document.getElementById('earn-pc');
+  const priceBox = pc ? pc.closest('.earn-custom') : null;
   const rows = document.querySelectorAll('#earn-rows tr');
   const even = document.getElementById('earn-even');
   if (!f || !p || !rows.length) return;
@@ -116,16 +118,20 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
   const OWN = 17.80 / 19, SPLIT = 8.90 / 19;
   document.querySelectorAll('.earn-fee').forEach((el) => { el.textContent = '$' + FEE; });
   const money = (n) => '$' + Math.round(n).toLocaleString('en-US');
+  const priceText = (n) => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
+  const blank = (msg) => {
+    rows.forEach((tr) => tr.querySelectorAll('td').forEach((td) => { td.textContent = '-'; }));
+    if (even) even.textContent = msg;
+  };
   function render() {
     const custom = f.value === 'custom';
     if (customBox) customBox.hidden = !custom;
+    const customPrice = p.value === 'custom';
+    if (priceBox) priceBox.hidden = !customPrice;
     const views = custom ? parseInt((c.value || '').replace(/[^0-9]/g, ''), 10) : parseInt(f.value, 10);
-    if (!views || views < 1) {
-      rows.forEach((tr) => tr.querySelectorAll('td').forEach((td) => { td.textContent = '-'; }));
-      if (even) even.textContent = 'Enter your follower count to see the math.';
-      return;
-    }
-    const price = parseFloat(p.value);
+    if (!views || views < 1) return blank('Enter your follower count to see the math.');
+    const price = customPrice ? parseFloat(pc.value) : parseFloat(p.value);
+    if (!price || price <= 0) return blank('Enter your book price to see the math.');
     rows.forEach((tr) => {
       const sales = Math.round(views * parseInt(tr.dataset.n, 10) * RATE);
       const td = tr.querySelectorAll('td');
@@ -134,7 +140,7 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
       td[2].textContent = money(sales * price * SPLIT);
     });
     const n = Math.ceil(FEE / (price * (OWN - SPLIT)));
-    if (even) even.textContent = 'At $' + price + ' a book, the $' + FEE + ' option comes out ahead from ' + n + ' sales.';
+    if (even) even.textContent = 'At ' + priceText(price) + ' a book, the $' + FEE + ' option comes out ahead from ' + n + ' sales.';
   }
   f.addEventListener('change', render);
   if (c) c.addEventListener('input', () => {
@@ -143,7 +149,15 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
     render();
   });
   f.addEventListener('change', () => { if (f.value === 'custom' && c) setTimeout(() => c.focus(), 0); });
-  p.addEventListener('change', render);
+  p.addEventListener('change', () => { render(); if (p.value === 'custom' && pc) setTimeout(() => pc.focus(), 0); });
+  if (pc) pc.addEventListener('input', () => {
+    let v = pc.value.replace(/[^0-9.]/g, '');
+    const dot = v.indexOf('.');
+    if (dot !== -1) v = v.slice(0, dot + 1) + v.slice(dot + 1).replace(/\./g, '').slice(0, 2);
+    if (parseFloat(v) > 999) v = '999';
+    pc.value = v;
+    render();
+  });
   render();
 })();
 
