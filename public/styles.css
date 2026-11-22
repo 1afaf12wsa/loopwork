@@ -607,3 +607,39 @@ a { color: var(--rose-deep); }
 .ask.a2 { right: 14px; top: 74px; border-radius: 14px 14px 4px 14px; background: var(--rose-soft); }
 .ask.a3 { left: 28px; top: 124px; }
 @media (max-width: 640px) { .ask.a3 { top: 104px; } }
+
+/* round 9 (23 Nov) */
+.deal-more { margin: 0; }
+.deal-more summary { cursor: pointer; list-style: none; padding: 12px 0; font-size: 14.5px; font-weight: 600; color: #8e2f50; border-top: 1px solid var(--line); min-height: 20px; }
+.deal-more summary::-webkit-details-marker { display: none; }
+.deal-more summary::after { content: " +"; }
+.deal-more[open] summary::after { content: " \2212"; }
+@media (max-width: 900px) {
+  .deal-math { display: none !important; }
+  .hero-stage { grid-template-columns: 124px minmax(0, 1fr); }
+  .hero-covers { height: 150px; }
+  .hero-cover-back { left: 0; top: 14px; width: 80px; }
+  .hero-cover-front { right: 0; top: 0; width: 86px; }
+}
+
+.book-list { display: grid; gap: 28px; padding-top: 20px; }
+.book-item { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 40px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 32px 36px; }
+.book-item-art { position: relative; display: block; height: 330px; }
+.bi-cover { position: absolute; left: 0; top: 0; width: 200px; height: auto; border-radius: 4px; transform: rotate(-3deg); box-shadow: 0 26px 44px -20px rgba(58, 34, 51, .5); z-index: 1; }
+.bi-page { position: absolute; right: 0; top: 40px; width: 160px; height: auto; border-radius: 3px; transform: rotate(4deg); box-shadow: 0 18px 30px -16px rgba(58, 34, 51, .4); }
+.bi-kicker { margin: 0 0 8px; font-size: 12.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--rose-deep); }
+.book-item h2 { margin: 0 0 6px; font-size: 32px; color: var(--plum); }
+.bi-author { margin: 0 0 14px; font-size: 15.5px; color: var(--soft); }
+.bi-author a { color: #8e2f50; }
+.bi-about { margin: 0 0 14px; font-size: 17px; line-height: 1.6; color: #5d4b57; max-width: 36em; }
+.bi-meta { margin: 0 0 20px; font-size: 15px; font-weight: 600; color: var(--plum); }
+@media (max-width: 760px) {
+  .book-item { grid-template-columns: 1fr; gap: 22px; padding: 22px 20px; }
+  .book-item-art { height: 250px; max-width: 280px; }
+  .bi-cover { width: 150px; }
+  .bi-page { width: 120px; top: 30px; }
+  .book-item h2 { font-size: 26px; }
+  .bi-about { font-size: 16px; }
+}
+/* the Black Friday price spans inside .deal-price keep the big price style (the plain span rule is for "once, per book") */
+.deal-price > .bw-only, .deal-price > .bw-after { font-family: 'Fraunces', Georgia, serif; font-size: inherit; font-weight: inherit; color: inherit; }
