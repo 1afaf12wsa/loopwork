@@ -247,11 +247,11 @@ a { color: var(--rose-deep); }
 .foot-contact > span:last-of-type { margin-top: 12px; }
 .foot-contact a { color: var(--rose-mid); text-decoration: none; }
 .foot-contact a:hover { color: #fff; }
-.foot-label { color: #9c8391; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
+.foot-label { color: #bba4b1; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
 .foot-social { display: inline-flex; align-items: center; gap: 7px; justify-content: flex-end; }
 .foot-social svg { flex: none; }
-.foot-quiet { opacity: .72; font-size: 13px; }
-.foot-contact span { color: #9c8391; font-size: 13px; }
+.foot-quiet { opacity: .86; font-size: 13px; }
+.foot-contact span { color: #bba4b1; font-size: 13px; }
 
 /* ---------- responsive ---------- */
 /* ---------- see a real one ---------- */
@@ -445,3 +445,8 @@ a { color: var(--rose-deep); }
   .earn-table th, .earn-table td { padding: 10px 5px; }
   .earn-field { flex: 1 1 130px; } .earn-field input, .earn-field select { min-width: 0; width: 100%; }
 }
+
+/* round 4 critique: darker rose for text links on the sand background (AA), 44px touch targets on phones */
+.section.alt .text-link, .section.alt .form-note a { color: #8e2f50; }
+.faq summary { min-height: 44px; }
+@media (max-width: 640px) { .btn-small { padding-top: 11px; padding-bottom: 11px; } }
