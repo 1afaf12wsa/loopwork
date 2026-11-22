@@ -140,10 +140,10 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
       const split = sales * price * SPLIT;
       // Below the break-even the 50/50 deal pays more, so say that instead of showing a fee-less figure.
       const splitWins = own <= split;
-      td[1].innerHTML = splitWins ? '50/50 pays more here' : money(own) + '<small>after the $' + FEE + '</small>';
-      td[1].className = splitWins ? 'tip' : 'win';
-      td[2].textContent = money(split);
-      td[2].className = splitWins ? 'win' : '';
+      td[1].textContent = money(split);
+      td[1].className = splitWins ? 'win' : '';
+      td[2].innerHTML = splitWins ? '50/50 pays more here' : money(own) + '<small>after the $' + FEE + '</small>';
+      td[2].className = splitWins ? 'tip' : 'win';
     });
     const n = Math.ceil(FEE / (price * (OWN - SPLIT)));
     if (even) even.textContent = 'At ' + priceText(price) + ' a book, the $' + FEE + ' option comes out ahead from ' + n + (n === 1 ? ' sale.' : ' sales.');
