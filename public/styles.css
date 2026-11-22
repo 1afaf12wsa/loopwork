@@ -460,3 +460,29 @@ a { color: var(--rose-deep); }
 .section.alt .text-link, .section.alt .form-note a { color: #8e2f50; }
 .faq summary { min-height: 44px; }
 @media (max-width: 640px) { .btn-small { padding-top: 11px; padding-bottom: 11px; } }
+
+/* Black Week bar and card lines (removed by promo.js after 30 Nov) */
+.promo-bar { background: var(--rose-deep); text-align: center; font-size: 14px; line-height: 1.4; padding: 9px 16px; }
+.promo-bar a { color: #fff; text-decoration: none; }
+.promo-bar u { text-underline-offset: 3px; white-space: nowrap; }
+.promo-bar .pb-short { display: none; }
+@media (max-width: 640px) { .promo-bar .pb-long { display: none; } .promo-bar .pb-short { display: inline; } .promo-bar { font-size: 13.5px; padding: 8px 12px; } }
+.deal-promo { display: inline-block; margin: -4px 0 14px; padding: 6px 10px; border-radius: 8px; background: var(--rose-soft); color: #8e2f50; font-size: 14px; font-weight: 600; }
+.deal-promo a { color: inherit; }
+
+/* real launch numbers in the hero */
+.hero-proof { margin: 14px 0 0; padding: 10px 14px; background: var(--paper); border-left: 3px solid var(--rose); border-radius: 0 10px 10px 0; font-size: 15px; color: var(--plum); }
+.hero-proof a { color: #8e2f50; font-weight: 600; white-space: nowrap; }
+
+/* footer legal links */
+.foot-legal { margin: 14px 0 0; font-size: 14px; color: #bba4b1; }
+.foot-legal a { color: var(--rose-mid); text-decoration: none; display: inline-block; padding: 4px 0; }
+.foot-legal a:hover { color: #fff; }
+
+/* terms, regulamin, refunds */
+.legal h2 { font-size: 22px; margin: 36px 0 10px; color: var(--plum); }
+.legal ul { padding-left: 20px; margin: 0 0 14px; }
+.legal li { margin: 0 0 10px; }
+.legal-meta { color: var(--soft); font-size: 14.5px; }
+.legal-form { margin: 0 0 20px; padding: 14px 18px; background: var(--paper); border-left: 3px solid var(--rose); border-radius: 0 12px 12px 0; }
+.legal-form p { margin: 0 0 8px; }
