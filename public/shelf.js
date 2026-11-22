@@ -5,13 +5,21 @@
   const books = document.querySelectorAll('.book3d');
   if (!books.length) return;
   const touch = window.matchMedia('(hover: none)');
-  const closeAll = (except) => books.forEach((b) => { if (b !== except) b.classList.remove('is-open'); });
+  const label = (b) => document.querySelector('.slot-label[data-k="' + b.dataset.k + '"]');
+  const setHint = (b, on) => {
+    const l = label(b);
+    if (!l || !l.dataset.open) return;
+    if (on && !l.dataset.orig) { l.dataset.orig = l.innerHTML; l.innerHTML = l.dataset.open; }
+    if (!on && l.dataset.orig) { l.innerHTML = l.dataset.orig; delete l.dataset.orig; }
+  };
+  const closeAll = (except) => books.forEach((b) => { if (b !== except) { b.classList.remove('is-open'); setHint(b, false); } });
   books.forEach((book) => {
     book.addEventListener('click', (e) => {
       if (!touch.matches || book.classList.contains('is-open')) return;
       e.preventDefault();
       closeAll(book);
       book.classList.add('is-open');
+      setHint(book, true);
     });
   });
   document.querySelectorAll('.slot-label.is-link').forEach((label) => {

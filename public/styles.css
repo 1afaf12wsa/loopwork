@@ -341,7 +341,7 @@ a { color: var(--rose-deep); }
 .bookcase-photo, .bookcase-photo img { display: block; width: 100%; height: auto; border-radius: 4px; }
 .empty, .book3d, .untie { position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--h); }
 .slot-label { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); white-space: nowrap; z-index: 10; pointer-events: none;
-  font-size: max(9px, var(--lab)); font-weight: 600; letter-spacing: .02em; color: #3b2516;
+  font-size: max(12px, var(--lab)); font-weight: 600; letter-spacing: .02em; color: #3b2516;
   background: linear-gradient(180deg, #f3e6bd 0%, #d9bd80 55%, #bd9a58 100%); padding: .22em .75em; border-radius: 2px;
   box-shadow: 0 1px 0 rgba(255,255,255,.55) inset, 0 1px 3px rgba(60, 35, 10, .45); }
 .slot-label b { color: #6e1f3c; margin-left: .45em; }
@@ -434,6 +434,10 @@ a { color: var(--rose-deep); }
 .earn-table tbody th { font-weight: 500; color: var(--soft); }
 .earn-table td { font-weight: 600; color: var(--plum); font-variant-numeric: tabular-nums; }
 .earn-table td.neg { color: var(--soft); font-weight: 500; }
+.earn-table thead a { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
+.earn-table td small { display: block; font-size: 11.5px; font-weight: 500; }
+.earn-even { font-size: 15px; font-weight: 600; color: var(--plum); margin: 14px 0 0; }
+.earn-real { font-size: 14.5px; color: var(--plum); margin: 12px 0 10px; }
 .earn-note { font-size: 13.5px; color: var(--soft); margin: 16px 0 0; line-height: 1.55; }
 @media (max-width: 640px) {
   .earn { padding: 18px 14px; }

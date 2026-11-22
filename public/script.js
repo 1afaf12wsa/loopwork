@@ -101,28 +101,34 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
 })();
 
 // Earnings example: plain arithmetic, labelled on the page as an example.
-// Keep ratios match the deal note: $17.80 of $19 with the $199, $8.90 on 50/50.
+// Keep ratios match the deal note: $17.80 of $19 with the one-time fee, $8.90 on 50/50 (fees about 6%).
+// The fee is $199 for anyone starting by 31 Dec 2026, then $290.
 (function setupEarn() {
   const f = document.getElementById('earn-f');
   const p = document.getElementById('earn-p');
   const rows = document.querySelectorAll('#earn-rows tr');
+  const even = document.getElementById('earn-even');
   if (!f || !p || !rows.length) return;
+  const FEE = Date.now() < Date.parse('2027-01-01T00:00:00Z') ? 199 : 290;
+  const OWN = 17.80 / 19, SPLIT = 8.90 / 19;
+  document.querySelectorAll('.earn-fee').forEach((el) => { el.textContent = '$' + FEE; });
   const money = (n) => (n < 0 ? '-$' : '$') + Math.abs(Math.round(n)).toLocaleString('en-US');
   function render() {
-    const followers = Math.max(0, Math.min(5000000, parseInt(f.value, 10) || 0));
+    const followers = parseInt(f.value, 10);
     const price = parseFloat(p.value);
     rows.forEach((tr) => {
       const sales = Math.round(followers * parseFloat(tr.dataset.r));
-      const own = sales * price * (17.80 / 19) - 199;
-      const split = sales * price * (8.90 / 19);
+      const own = sales * price * OWN - FEE;
       const td = tr.querySelectorAll('td');
       td[0].textContent = sales.toLocaleString('en-US');
-      td[1].textContent = own < 0 ? money(own) + ' (not paid back yet)' : money(own);
+      td[1].innerHTML = own < 0 ? money(own) + '<small>not paid back</small>' : money(own);
       td[1].classList.toggle('neg', own < 0);
-      td[2].textContent = money(split);
+      td[2].textContent = money(sales * price * SPLIT);
     });
+    const n = Math.ceil(FEE / (price * (OWN - SPLIT)));
+    if (even) even.textContent = 'At $' + price + ' a book, the $' + FEE + ' option comes out ahead from ' + n + ' sales.';
   }
-  f.addEventListener('input', render);
+  f.addEventListener('change', render);
   p.addEventListener('change', render);
   render();
 })();
