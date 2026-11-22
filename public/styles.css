@@ -413,3 +413,27 @@ a { color: var(--rose-deep); }
 @media (prefers-reduced-motion: reduce) {
   .b3-body, .b3-cover, .empty { transition: none; }
 }
+
+/* ---------- earnings example (22 Nov) ---------- */
+.earn { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+.earn-inputs { display: flex; flex-wrap: wrap; gap: 16px 24px; margin-bottom: 18px; }
+.earn-field { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: var(--plum); }
+.earn-field input, .earn-field select { font: inherit; font-size: 16px; font-weight: 500; color: var(--ink); background: var(--cream);
+  border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-width: 150px; }
+.earn-field input:focus, .earn-field select:focus { outline: 2px solid var(--rose-mid); border-color: var(--rose); }
+.earn-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.earn-table th, .earn-table td { text-align: left; padding: 12px 10px; border-top: 1px solid var(--line); }
+.earn-table thead th { font-size: 12.5px; font-weight: 600; color: var(--soft); border-top: 0; vertical-align: bottom; }
+.earn-table tbody th { font-weight: 500; color: var(--soft); }
+.earn-table td { font-weight: 600; color: var(--plum); font-variant-numeric: tabular-nums; }
+.earn-table td.neg { color: var(--soft); font-weight: 500; }
+.earn-note { font-size: 13.5px; color: var(--soft); margin: 16px 0 0; line-height: 1.55; }
+@media (max-width: 640px) {
+  .earn { padding: 18px 14px; }
+  .earn-table { font-size: 14px; }
+  .earn-table th, .earn-table td { padding: 10px 5px; }
+  .earn-field { flex: 1 1 130px; } .earn-field input, .earn-field select { min-width: 0; width: 100%; }
+}
+
+/* touch screens: a tap counts as hover, so never swap the shelf photo for the empty shelf */
+@media (hover: none) { .empty { opacity: 0 !important; } }

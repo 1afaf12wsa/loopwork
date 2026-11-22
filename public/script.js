@@ -99,3 +99,30 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
     x0 = null;
   });
 })();
+
+// Earnings example: plain arithmetic, labelled on the page as an example.
+// Keep ratios match the deal note: $17.80 of $19 with the $199, $8.90 on 50/50.
+(function setupEarn() {
+  const f = document.getElementById('earn-f');
+  const p = document.getElementById('earn-p');
+  const rows = document.querySelectorAll('#earn-rows tr');
+  if (!f || !p || !rows.length) return;
+  const money = (n) => (n < 0 ? '-$' : '$') + Math.abs(Math.round(n)).toLocaleString('en-US');
+  function render() {
+    const followers = Math.max(0, Math.min(5000000, parseInt(f.value, 10) || 0));
+    const price = parseFloat(p.value);
+    rows.forEach((tr) => {
+      const sales = Math.round(followers * parseFloat(tr.dataset.r));
+      const own = sales * price * (17.80 / 19) - 199;
+      const split = sales * price * (8.90 / 19);
+      const td = tr.querySelectorAll('td');
+      td[0].textContent = sales.toLocaleString('en-US');
+      td[1].textContent = own < 0 ? money(own) + ' (not paid back yet)' : money(own);
+      td[1].classList.toggle('neg', own < 0);
+      td[2].textContent = money(split);
+    });
+  }
+  f.addEventListener('input', render);
+  p.addEventListener('change', render);
+  render();
+})();
