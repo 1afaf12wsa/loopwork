@@ -596,3 +596,14 @@ a { color: var(--rose-deep); }
   .deal-banner { display: none; }
 }
 @media (max-width: 640px) { .how-cards { grid-template-columns: 1fr; } .how-art { height: 150px; } }
+
+/* review fixes (23 Nov) */
+.hero { grid-template-columns: 1.12fr .88fr; }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+.hero-stage { max-width: 470px; }
+.how-art-asks { position: relative; display: block; padding: 0; }
+.ask { position: absolute; margin: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 14px 14px 14px 4px; padding: 8px 12px; font-size: 13.5px; color: var(--plum); box-shadow: 0 10px 20px -14px rgba(58, 34, 51, .4); white-space: nowrap; }
+.ask.a1 { left: 14px; top: 24px; }
+.ask.a2 { right: 14px; top: 74px; border-radius: 14px 14px 4px 14px; background: var(--rose-soft); }
+.ask.a3 { left: 28px; top: 124px; }
+@media (max-width: 640px) { .ask.a3 { top: 104px; } }
