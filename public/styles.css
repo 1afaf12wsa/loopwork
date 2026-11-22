@@ -509,3 +509,90 @@ a { color: var(--rose-deep); }
 .legal-toc a { display: inline-block; padding: 4px 0; font-size: 14.5px; }
 @media (max-width: 640px) { .legal-toc ul { columns: 1; } }
 .legal h2, .legal li[id] { scroll-margin-top: 90px; }
+
+/* ================= redesign (23 Nov): hero with both covers, facts strip, numbers band, picture steps, deal table ================= */
+.hero .apply-form { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 14px; align-items: flex-end; }
+.hero .apply-form .field { flex: 1 1 160px; }
+.hero .apply-form .btn { flex: 1 1 170px; justify-content: center; }
+.hero .form-note { margin-top: 12px; }
+
+.hero-stage { position: relative; height: 470px; width: 100%; max-width: 440px; }
+.hero-covers { position: absolute; inset: 0 0 auto 0; height: 400px; }
+.hero-cover { position: absolute; display: block; border-radius: 4px; overflow: hidden; background: var(--paper); }
+.hero-cover img { display: block; width: 100%; height: auto; }
+.hero-cover-back { left: 4%; top: 46px; width: 48%; transform: rotate(-6deg); box-shadow: 0 30px 50px -20px rgba(58, 34, 51, .45); }
+.hero-cover-front { right: 2%; top: 0; width: 52%; transform: rotate(4deg); box-shadow: 0 34px 60px -20px rgba(58, 34, 51, .55); }
+.launch-card { position: absolute; left: 0; bottom: 0; max-width: 300px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px 20px; box-shadow: 0 18px 40px -18px rgba(58, 34, 51, .35); }
+.launch-kicker { margin: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--rose-deep); }
+.launch-big { margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.1; color: var(--plum); }
+.launch-small { margin: 6px 0 0; font-size: 14px; line-height: 1.45; color: var(--soft); }
+.launch-small a { color: #8e2f50; font-weight: 600; }
+.approve-chip { position: absolute; left: 0; top: 4px; z-index: 2; margin: 0; background: var(--plum); color: #f6e9ef; border-radius: 999px; padding: 9px 15px; font-size: 14px; font-weight: 500; }
+
+.facts { background: var(--sand); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.facts ul { list-style: none; margin: 0 auto; max-width: var(--max-width); padding: 18px 24px; display: flex; flex-wrap: wrap; gap: 10px 36px; justify-content: space-between; font-size: 15px; color: var(--plum); }
+.facts strong { font-weight: 600; }
+
+.numbers { background: var(--plum); color: #f6e9ef; }
+.numbers-inner { max-width: var(--max-width); margin: 0 auto; padding: 52px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 30px; }
+.num { margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 44px; font-weight: 600; line-height: 1; color: #fff; }
+.num-note { margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: #d9c6d0; }
+
+.how-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.how-cards li { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.how-art { height: 180px; background: var(--sand); display: flex; justify-content: center; align-items: flex-end; gap: 10px; overflow: hidden; }
+.how-page { width: 130px; height: auto; display: block; margin-bottom: -56px; box-shadow: 0 18px 30px -14px rgba(58, 34, 51, .45); }
+.how-left { width: 108px; transform: rotate(-4deg); }
+.how-right { width: 108px; transform: rotate(4deg); margin-bottom: -44px; }
+.how-art-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 18px; align-items: stretch; }
+.how-art-grid span { background: var(--line); border-radius: 6px; }
+.how-art-grid span.r { background: var(--rose-mid); }
+.how-balance { align-self: center; width: 100%; max-width: 190px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; box-shadow: 0 14px 26px -16px rgba(58, 34, 51, .4); }
+.how-balance p { margin: 0 0 8px; font-size: 12px; font-weight: 600; color: var(--soft); }
+.how-balance span { display: block; height: 9px; border-radius: 6px; background: var(--rose-mid); margin-top: 7px; }
+.how-balance span.w70 { width: 70%; background: var(--line); }
+.how-balance span.w45 { width: 45%; background: var(--line); }
+.how-body { padding: 18px 18px 22px; }
+.how-step { margin: 0 0 6px; font-size: 13px; font-weight: 600; color: var(--rose-deep); }
+.how-body h3 { margin: 0 0 8px; font-size: 19px; color: var(--plum); }
+.how-body p:last-child { margin: 0; font-size: 14.5px; line-height: 1.55; color: #5d4b57; }
+
+.deal-banner { display: inline-block; margin: 0 0 18px; background: var(--rose-soft); color: #8e2f50; font-size: 15px; font-weight: 600; padding: 10px 14px; border-radius: 10px; }
+.deal-banner a { color: inherit; }
+.deal-table-wrap { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.deal-table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+.deal-table th, .deal-table td { text-align: left; vertical-align: top; padding: 15px 22px; border-top: 1px solid var(--line); color: var(--plum); }
+.deal-table thead th, .deal-table thead td { border-top: 0; padding-top: 24px; padding-bottom: 18px; vertical-align: bottom; }
+.deal-table tbody th { font-weight: 500; color: var(--soft); width: 22%; }
+.deal-table .pick { background: #fbf3f5; border-left: 2px solid var(--rose-deep); border-right: 2px solid var(--rose-deep); }
+.deal-table thead .pick { border-top: 2px solid var(--rose-deep); }
+.deal-table tr.last .pick { border-bottom: 2px solid var(--rose-deep); }
+.deal-table .strong { font-weight: 600; }
+.deal-badge-inline { display: inline-block; margin-bottom: 10px; background: var(--rose-deep); color: #fff; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+.dt-name { display: block; font-family: 'Fraunces', Georgia, serif; font-size: 23px; font-weight: 600; color: var(--plum); }
+.dt-price { display: block; margin-top: 6px; font-family: 'Fraunces', Georgia, serif; font-size: 38px; font-weight: 600; line-height: 1.1; color: var(--rose-deep); }
+.dt-price.plain { color: var(--plum); }
+.dt-price small { font-family: 'Inter', system-ui, sans-serif; font-size: 15px; font-weight: 500; color: var(--soft); }
+.dt-price .was { color: var(--soft); font-size: .58em; font-weight: 500; }
+.deals { display: none; }
+
+@media (max-width: 1100px) { .how-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 900px) {
+  .hero-stage { max-width: none; height: auto; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 16px; }
+  .hero-covers { position: relative; inset: auto; height: 124px; }
+  .hero-cover-back { left: 0; top: 10px; width: 62px; }
+  .hero-cover-front { right: 0; top: 0; width: 68px; }
+  .launch-card { position: static; max-width: none; border: 0; padding: 0; box-shadow: none; background: none; }
+  .launch-big { font-size: 23px; }
+  .launch-small { font-size: 13.5px; }
+  .approve-chip { display: none; }
+  .hero .apply-form { background: none; border: 0; padding: 0; align-items: stretch; }
+  .hero .apply-form .field, .hero .apply-form .btn { flex: none; }
+  .facts ul { justify-content: flex-start; gap: 8px 22px; font-size: 14px; padding: 14px 20px; }
+  .num { font-size: 36px; }
+  .numbers-inner { padding: 40px 20px; gap: 24px; }
+  .deal-table-wrap { display: none; }
+  .deals { display: grid; }
+  .deal-banner { display: none; }
+}
+@media (max-width: 640px) { .how-cards { grid-template-columns: 1fr; } .how-art { height: 150px; } }
