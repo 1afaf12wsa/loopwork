@@ -643,3 +643,47 @@ a { color: var(--rose-deep); }
 }
 /* the Black Friday price spans inside .deal-price keep the big price style (the plain span rule is for "once, per book") */
 .deal-price > .bw-only, .deal-price > .bw-after { font-family: 'Fraunces', Georgia, serif; font-size: inherit; font-weight: inherit; color: inherit; }
+
+/* ================= shelf v8 (23 Nov): two-shelf photo, open book zooms forward with an info card, dim spotlight; phones get a bottom sheet ================= */
+.bookcase { --cw: min(1440px, calc(100vw - 48px), 150vh); overflow: hidden; }
+.shelf-card { display: none; }
+@media (hover: hover) and (min-width: 601px) {
+  .bookcase::after { content: ""; position: absolute; inset: 0; background: rgba(34, 18, 10, .46); opacity: 0; transition: opacity .3s ease; pointer-events: none; z-index: 6; }
+  .bookcase:has(.book3d:hover, .book3d:focus-visible, .shelf-card:hover, .shelf-card:focus-within)::after { opacity: 1; }
+  .bookcase:has(.book3d:hover, .book3d:focus-visible, .shelf-card:hover, .shelf-card:focus-within) .slot-label { opacity: 0; }
+  .slot-label { transition: opacity .2s ease; }
+
+  .book3d { transform-origin: 50% 0%; transition: opacity .12s ease, transform .5s cubic-bezier(.3, .6, .2, 1); }
+  .book3d[data-k="yours"] { transform-origin: 50% 100%; }
+  .book3d:hover, .book3d:focus-visible,
+  .book3d:has(+ .shelf-card:hover), .book3d:has(+ .shelf-card:focus-within) { opacity: 1; z-index: 8; transform: scale(1.9); }
+  .book3d:has(+ .shelf-card:hover) .b3-cover, .book3d:has(+ .shelf-card:focus-within) .b3-cover { transform: rotateY(-165deg); }
+  .bookcase:has(.shelf-card[data-k="dog"]:hover, .shelf-card[data-k="dog"]:focus-within) .empty[data-k="dog"],
+  .bookcase:has(.shelf-card[data-k="reset"]:hover, .shelf-card[data-k="reset"]:focus-within) .empty[data-k="reset"],
+  .bookcase:has(.shelf-card[data-k="yours"]:hover, .shelf-card[data-k="yours"]:focus-within) .empty[data-k="yours"] { opacity: 1; }
+
+  .shelf-card { display: block; position: absolute; left: var(--cx); top: var(--cy); width: var(--cw); z-index: 9; text-align: left;
+    background: var(--paper); border-radius: 14px; padding: clamp(14px, 1.6cqw, 24px); box-shadow: 0 24px 50px -20px rgba(20, 10, 5, .6);
+    opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s; }
+  .book3d:is(:hover, :focus-visible) + .shelf-card, .shelf-card:hover, .shelf-card:focus-within {
+    opacity: 1; visibility: visible; transform: none; transition: opacity .3s ease .45s, transform .3s ease .45s, visibility 0s; }
+}
+.sc-kicker { margin: 0 0 6px; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--rose-deep); }
+.sc-title { margin: 0 0 4px; font-family: 'Fraunces', Georgia, serif; font-size: clamp(19px, 1.9cqw, 26px); font-weight: 600; line-height: 1.15; color: var(--plum); }
+.sc-author { margin: 0 0 10px; font-size: 14px; color: var(--soft); }
+.sc-about { margin: 0 0 10px; font-size: 14.5px; line-height: 1.5; color: #5d4b57; }
+.sc-meta { margin: 0 0 14px; font-size: 14px; font-weight: 600; color: var(--plum); }
+.sc-btn { font-size: 15px; padding: 11px 16px; }
+
+/* phones: a tap opens the book in a sheet from the bottom of the screen */
+.shelf-sheet { position: fixed; inset: auto 0 0 0; margin: 0; width: 100%; max-width: none; max-height: 90dvh; box-sizing: border-box;
+  border: 0; border-radius: 20px 20px 0 0; padding: 22px 18px 26px; background: var(--paper); color: var(--ink); overflow: auto; text-align: left; }
+.shelf-sheet::backdrop { background: rgba(28, 16, 24, .55); }
+.shelf-sheet[open] { animation: sheet-up .28s ease-out; }
+@keyframes sheet-up { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+.ss-close { position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--sand); color: var(--plum); font-size: 26px; line-height: 1; cursor: pointer; }
+.ss-art { display: flex; gap: 12px; justify-content: center; margin: 8px 0 18px; }
+.ss-art img { width: 44%; max-width: 190px; height: auto; border-radius: 4px; box-shadow: 0 16px 28px -16px rgba(58, 34, 51, .55); }
+.ss-art .ss-yours { width: 44%; max-width: 190px; aspect-ratio: 2 / 3; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #efe6d3; outline: 1px solid rgba(176, 138, 62, .6); outline-offset: -10px; font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 600; color: #a8853e; }
+.ss-art:empty { display: none; }
+@media (prefers-reduced-motion: reduce) { .book3d, .shelf-card, .bookcase::after { transition: none !important; } .shelf-sheet[open] { animation: none; } }
