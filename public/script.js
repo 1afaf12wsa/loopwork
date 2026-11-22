@@ -105,6 +105,8 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
 // The one-time fee is $199 for anyone starting by 31 Dec 2026, then $290. It is shown as a fee, not subtracted.
 (function setupEarn() {
   const f = document.getElementById('earn-f');
+  const c = document.getElementById('earn-c');
+  const customBox = c ? c.closest('.earn-custom') : null;
   const p = document.getElementById('earn-p');
   const rows = document.querySelectorAll('#earn-rows tr');
   const even = document.getElementById('earn-even');
@@ -115,7 +117,14 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
   document.querySelectorAll('.earn-fee').forEach((el) => { el.textContent = '$' + FEE; });
   const money = (n) => '$' + Math.round(n).toLocaleString('en-US');
   function render() {
-    const views = parseInt(f.value, 10);
+    const custom = f.value === 'custom';
+    if (customBox) customBox.hidden = !custom;
+    const views = custom ? parseInt((c.value || '').replace(/[^0-9]/g, ''), 10) : parseInt(f.value, 10);
+    if (!views || views < 1) {
+      rows.forEach((tr) => tr.querySelectorAll('td').forEach((td) => { td.textContent = '-'; }));
+      if (even) even.textContent = 'Enter your follower count to see the math.';
+      return;
+    }
     const price = parseFloat(p.value);
     rows.forEach((tr) => {
       const sales = Math.round(views * parseInt(tr.dataset.n, 10) * RATE);
@@ -128,6 +137,12 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
     if (even) even.textContent = 'At $' + price + ' a book, the $' + FEE + ' option comes out ahead from ' + n + ' sales.';
   }
   f.addEventListener('change', render);
+  if (c) c.addEventListener('input', () => {
+    const digits = c.value.replace(/[^0-9]/g, '').slice(0, 10);
+    c.value = digits ? Number(digits).toLocaleString('en-US') : '';
+    render();
+  });
+  f.addEventListener('change', () => { if (f.value === 'custom' && c) setTimeout(() => c.focus(), 0); });
   p.addEventListener('change', render);
   render();
 })();

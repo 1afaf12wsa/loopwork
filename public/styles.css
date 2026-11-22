@@ -427,6 +427,7 @@ a { color: var(--rose-deep); }
 .earn-field { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: var(--plum); }
 .earn-field input, .earn-field select { font: inherit; font-size: 16px; font-weight: 500; color: var(--ink); background: var(--cream);
   border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-width: 150px; }
+.earn-field[hidden] { display: none; }
 .earn-field input:focus, .earn-field select:focus { outline: 2px solid var(--rose-mid); border-color: var(--rose); }
 .earn-table { width: 100%; border-collapse: collapse; font-size: 15px; }
 .earn-table th, .earn-table td { text-align: left; padding: 12px 10px; border-top: 1px solid var(--line); }
