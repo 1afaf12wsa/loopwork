@@ -1,6 +1,7 @@
 // "In production" stack on the bookshelf: hover (or tap) plays a clip of its twine untying; leaving plays it backwards,
 // then hides the clip so the photo underneath shows again. The clip is encoded all-intra, so seeking frame by frame is smooth.
 (function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.querySelectorAll('.untie').forEach(function (box) {
     var v = box.querySelector('video');
     if (!v) return;

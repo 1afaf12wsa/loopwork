@@ -4,7 +4,7 @@
   --sand: #ede1d6;
   --plum: #3a2233;
   --ink: #2c1f2a;
-  --soft: #7b6a76;
+  --soft: #6e5d69;
   --rose: #e0708f;
   --rose-deep: #b5446a;
   --rose-soft: #fbe4ea;
@@ -335,7 +335,7 @@ a { color: var(--rose-deep); }
 .shelf-section .section-sub { margin-left: auto; margin-right: auto; }
 .shelf-hint { font-size: 13.5px; color: var(--soft); margin: 18px 0 0; }
 
-.bookcase { position: relative; width: min(1440px, calc(100vw - 48px)); left: 50%; margin: 0 0 0 calc(min(1440px, calc(100vw - 48px)) / -2);
+.bookcase { --cw: min(1440px, calc(100vw - 48px), 118.5vh); position: relative; width: var(--cw); left: 50%; margin: 0 0 0 calc(var(--cw) / -2);
   container-type: inline-size; border-radius: 4px; --k: 1; --lab: 1.05cqw;
   box-shadow: 0 30px 60px -24px rgba(90, 60, 30, .45), 0 8px 20px rgba(90, 60, 30, .15); }
 .bookcase-photo, .bookcase-photo img { display: block; width: 100%; height: auto; border-radius: 4px; }
@@ -344,7 +344,9 @@ a { color: var(--rose-deep); }
   font-size: max(9px, var(--lab)); font-weight: 600; letter-spacing: .02em; color: #3b2516;
   background: linear-gradient(180deg, #f3e6bd 0%, #d9bd80 55%, #bd9a58 100%); padding: .22em .75em; border-radius: 2px;
   box-shadow: 0 1px 0 rgba(255,255,255,.55) inset, 0 1px 3px rgba(60, 35, 10, .45); }
-.slot-label b { color: #8e2f50; margin-left: .45em; }
+.slot-label b { color: #6e1f3c; margin-left: .45em; }
+.slot-label .st { display: none; }
+.slot-label.is-link { pointer-events: auto; cursor: pointer; }
 
 /* the empty shelf behind a lifted book */
 .empty { background-size: 100% 100%; opacity: 0; transition: opacity .3s ease .05s; z-index: 1; pointer-events: none;
@@ -355,7 +357,10 @@ a { color: var(--rose-deep); }
 .bookcase:has(.book3d[data-k="yours"]:hover) .empty[data-k="yours"],
 .bookcase:has(.book3d[data-k="dog"]:focus-visible) .empty[data-k="dog"],
 .bookcase:has(.book3d[data-k="reset"]:focus-visible) .empty[data-k="reset"],
-.bookcase:has(.book3d[data-k="yours"]:focus-visible) .empty[data-k="yours"] { opacity: 1; }
+.bookcase:has(.book3d[data-k="yours"]:focus-visible) .empty[data-k="yours"],
+.bookcase:has(.book3d[data-k="dog"].is-open) .empty[data-k="dog"],
+.bookcase:has(.book3d[data-k="reset"].is-open) .empty[data-k="reset"],
+.bookcase:has(.book3d[data-k="yours"].is-open) .empty[data-k="yours"] { opacity: 1; }
 
 /* the 3D book: invisible on the shelf (the photo shows it), lifts out on hover */
 .book3d { display: block; perspective: 2400px; perspective-origin: 0% 50%; z-index: 3; outline: none; opacity: 0; transition: opacity .12s ease;
@@ -402,13 +407,15 @@ a { color: var(--rose-deep); }
 @media (max-width: 600px) {
   .bookcase { --k: 1.6254; width: 100%; left: 0; margin: 0; }
   .empty, .book3d, .untie { left: var(--mx); top: var(--my); width: var(--mw); height: var(--mh); }
-  .slot-label { left: var(--mx); top: var(--my); font-size: 9px; padding: 2px 6px; letter-spacing: 0; }
+  .slot-label { left: var(--mx); top: var(--my); font-size: 11px; padding: 2px 6px; letter-spacing: 0; }
   .slot-label .lt { display: none; }
-  .slot-label .lt + b { margin-left: 0; }
+  .slot-label .st { display: inline; }
 }
+/* touch screens: a tap counts as hover, so only .is-open (set by script.js on the first tap) lifts and opens a book */
 @media (hover: none) {
-  .b3-body { display: none; }
-  .book3d { opacity: 0 !important; }
+  .book3d:not(.is-open) { opacity: 0 !important; }
+  .book3d:not(.is-open) .b3-cover { transform: none !important; }
+  .bookcase:not(:has(.is-open)) .empty { opacity: 0 !important; }
 }
 @media (prefers-reduced-motion: reduce) {
   .b3-body, .b3-cover, .empty { transition: none; }
@@ -434,6 +441,3 @@ a { color: var(--rose-deep); }
   .earn-table th, .earn-table td { padding: 10px 5px; }
   .earn-field { flex: 1 1 130px; } .earn-field input, .earn-field select { min-width: 0; width: 100%; }
 }
-
-/* touch screens: a tap counts as hover, so never swap the shelf photo for the empty shelf */
-@media (hover: none) { .empty { opacity: 0 !important; } }
