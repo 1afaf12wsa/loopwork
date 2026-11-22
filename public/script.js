@@ -6,7 +6,7 @@ function setupApplyForm(form) {
   const button = form.querySelector('button');
   const buttonLabel = button.querySelector('.btn-label');
   const note = form.nextElementSibling;
-  const honeypot = form.querySelector('input[name="website"]');
+  const honeypot = form.querySelector('input[name="hp_note"]');
   const originalLabel = buttonLabel.textContent;
 
   form.addEventListener('submit', async (e) => {
@@ -109,7 +109,7 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
   const rows = document.querySelectorAll('#earn-rows tr');
   const even = document.getElementById('earn-even');
   if (!f || !p || !rows.length) return;
-  const FEE = Date.now() < Date.parse('2027-01-01T00:00:00Z') ? 199 : 290;
+  const FEE = Date.now() < Date.parse('2027-01-01T12:00:00Z') ? 199 : 290;
   const OWN = 17.80 / 19, SPLIT = 8.90 / 19;
   document.querySelectorAll('.earn-fee').forEach((el) => { el.textContent = '$' + FEE; });
   const money = (n) => (n < 0 ? '-$' : '$') + Math.abs(Math.round(n)).toLocaleString('en-US');
@@ -131,4 +131,19 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
   f.addEventListener('change', render);
   p.addEventListener('change', render);
   render();
+})();
+
+// Phone header button: while the hero form is on screen (or above), go to it instead of the form at the bottom.
+(function headerCta() {
+  const cta = document.querySelector('.nav .btn-small, header .btn-small');
+  const hero = document.querySelector('.hero .apply-form');
+  if (!cta || !hero) return;
+  cta.addEventListener('click', (e) => {
+    if (hero.getBoundingClientRect().bottom > 0) {
+      e.preventDefault();
+      hero.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const first = hero.querySelector('input[name="handle"]');
+      if (first) setTimeout(() => first.focus({ preventScroll: true }), 400);
+    }
+  });
 })();
