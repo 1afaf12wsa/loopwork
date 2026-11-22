@@ -136,16 +136,23 @@ document.querySelectorAll('.apply-form').forEach(setupApplyForm);
       const sales = Math.round(views * parseInt(tr.dataset.n, 10) * RATE);
       const td = tr.querySelectorAll('td');
       td[0].textContent = sales.toLocaleString('en-US');
-      td[1].textContent = money(sales * price * OWN);
-      td[2].textContent = money(sales * price * SPLIT);
+      const own = sales * price * OWN - FEE;
+      const split = sales * price * SPLIT;
+      // Below the break-even the 50/50 deal pays more, so say that instead of showing a fee-less figure.
+      const splitWins = own <= split;
+      td[1].innerHTML = splitWins ? '50/50 pays more here' : money(own) + '<small>after the $' + FEE + '</small>';
+      td[1].className = splitWins ? 'tip' : 'win';
+      td[2].textContent = money(split);
+      td[2].className = splitWins ? 'win' : '';
     });
     const n = Math.ceil(FEE / (price * (OWN - SPLIT)));
-    if (even) even.textContent = 'At ' + priceText(price) + ' a book, the $' + FEE + ' option comes out ahead from ' + n + ' sales.';
+    if (even) even.textContent = 'At ' + priceText(price) + ' a book, the $' + FEE + ' option comes out ahead from ' + n + (n === 1 ? ' sale.' : ' sales.');
   }
   f.addEventListener('change', render);
   if (c) c.addEventListener('input', () => {
-    const digits = c.value.replace(/[^0-9]/g, '').slice(0, 10);
-    c.value = digits ? Number(digits).toLocaleString('en-US') : '';
+    const digits = c.value.replace(/[^0-9]/g, '').slice(0, 9);
+    const num = digits ? Math.min(Number(digits), 10000000) : 0;
+    c.value = num ? num.toLocaleString('en-US') : '';
     render();
   });
   f.addEventListener('change', () => { if (f.value === 'custom' && c) setTimeout(() => c.focus(), 0); });
