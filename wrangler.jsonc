@@ -8,7 +8,9 @@
   // edge and only reaches the worker below when no file matches the URL.
   "assets": {
     "directory": "./public",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    // Unknown URLs get public/404.html (with a 404 status) instead of a blank page.
+    "not_found_handling": "404-page"
   },
 
   // Not secret, so they live here rather than in the dashboard, where a deploy
