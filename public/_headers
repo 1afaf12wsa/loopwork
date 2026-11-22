@@ -6,11 +6,12 @@
   Referrer-Policy: strict-origin-when-cross-origin
 
 # Pages are cached at the edge but revalidated behind the visitor, so an edit
-# reaches people within the minute without anyone waiting for it.
+# reaches people within the minute without anyone waiting for it. The stale window
+# is 10 minutes (was a day), so dated prices and offers never show a day late.
 /
-  Cache-Control: public, max-age=60, stale-while-revalidate=86400
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
 /*.html
-  Cache-Control: public, max-age=60, stale-while-revalidate=86400
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
 
 # These change only on deploy, and Pages purges the edge on every deploy.
 /styles.css

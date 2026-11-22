@@ -17,7 +17,19 @@ script_tag = re.search(r'<script src="/script.js[^"]*"></script>', priv).group(0
 UPDATED_EN = '22 November 2026'
 UPDATED_PL = '22 listopada 2026'
 
+def toc(body, label):
+    # A linked contents list built from the numbered sections, placed before the first one.
+    items = re.findall(r'<h2 id="([^"]+)">(\d+\.\s[^<]+)</h2>', body)
+    if not items:
+        return body
+    nav = ('  <nav class="legal-toc" aria-label="%s"><p>%s</p><ul>' % (label, label)
+           + ''.join('<li><a href="#%s">%s</a></li>' % (i, t) for i, t in items) + '</ul></nav>\n\n')
+    k = body.index('  <h2 ')
+    return body[:k] + nav + body[k:]
+
 def page(path, lang, title, body):
+    if path in ('terms.html', 'regulamin.html'):
+        body = toc(body, 'Contents' if lang == 'en' else 'Spis treści')
     h = head.replace('<html lang="en">', '<html lang="%s">' % lang)
     s = (h + '<title>%s</title>\n<meta name="robots" content="noindex">\n' % title + head_rest
          + '<body>\n' + header + '\n<main class="section narrow legal">\n' + body.strip('\n') + '\n</main>\n\n'

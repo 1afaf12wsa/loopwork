@@ -462,11 +462,11 @@ a { color: var(--rose-deep); }
 @media (max-width: 640px) { .btn-small { padding-top: 11px; padding-bottom: 11px; } }
 
 /* Black Week bar and card lines (removed by promo.js after 30 Nov) */
-.promo-bar { background: var(--rose-deep); text-align: center; font-size: 14px; line-height: 1.4; padding: 9px 16px; }
-.promo-bar a { color: #fff; text-decoration: none; }
+.promo-bar { background: var(--rose-deep); text-align: center; font-size: 14px; line-height: 1.4; }
+.promo-bar a { display: block; padding: 9px 16px; color: #fff; text-decoration: none; }
 .promo-bar u { text-underline-offset: 3px; white-space: nowrap; }
 .promo-bar .pb-short { display: none; }
-@media (max-width: 640px) { .promo-bar .pb-long { display: none; } .promo-bar .pb-short { display: inline; } .promo-bar { font-size: 13.5px; padding: 8px 12px; } }
+@media (max-width: 640px) { .promo-bar .pb-long { display: none; } .promo-bar .pb-short { display: inline; } .promo-bar { font-size: 13.5px; } .promo-bar a { padding: 8px 12px; } }
 .deal-promo { display: inline-block; margin: -4px 0 14px; padding: 6px 10px; border-radius: 8px; background: var(--rose-soft); color: #8e2f50; font-size: 14px; font-weight: 600; }
 .deal-promo a { color: inherit; }
 
@@ -486,3 +486,26 @@ a { color: var(--rose-deep); }
 .legal-meta { color: var(--soft); font-size: 14.5px; }
 .legal-form { margin: 0 0 20px; padding: 14px 18px; background: var(--paper); border-left: 3px solid var(--rose); border-radius: 0 12px 12px 0; }
 .legal-form p { margin: 0 0 8px; }
+
+/* Black Friday week: .bw-only shows during the week, .bw-after replaces it once html.bw-over is set (head script) */
+.bw-after { display: none; }
+.bw-over .bw-only { display: none !important; }
+.bw-over .bw-after { display: revert; }
+.deal-price .was { color: var(--soft); font-size: .62em; font-weight: 500; margin-right: .15em; }
+
+/* "What you get" is shorter on phones */
+@media (max-width: 640px) {
+  #get .cards { gap: 10px; }
+  #get .card { padding: 16px 16px; }
+  #get .card h3 { font-size: 16.5px; margin-bottom: 4px; }
+  #get .card p { font-size: 14px; line-height: 1.5; }
+}
+
+/* contents list on the terms pages */
+.legal-toc { margin: 22px 0 8px; padding: 14px 18px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+.legal-toc p { margin: 0 0 6px; font-weight: 600; color: var(--plum); }
+.legal-toc ul { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 24px; }
+.legal-toc li { margin: 0; break-inside: avoid; }
+.legal-toc a { display: inline-block; padding: 4px 0; font-size: 14.5px; }
+@media (max-width: 640px) { .legal-toc ul { columns: 1; } }
+.legal h2, .legal li[id] { scroll-margin-top: 90px; }
