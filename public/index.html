@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Loopwork Books">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://loopworkbooks.com/img/og-card.jpg">
-<link rel="stylesheet" href="/styles.css?v=20261122g">
+<link rel="stylesheet" href="/styles.css?v=20261122h">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Loopwork", "alternateName": ["Loopwork Books", "loopwork.books"], "url": "https://loopworkbooks.com/", "logo": "https://loopworkbooks.com/apple-touch-icon.png", "description": "A small publishing studio that turns creators' posts into designed eBooks.", "founder": {"@type": "Person", "name": "Volodymyr Verbytskyi"}, "address": {"@type": "PostalAddress", "addressCountry": "PL"}, "sameAs": ["https://www.instagram.com/loopwork.books/", "https://whop.com/loopworkbooks/"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Loopwork", "url": "https://loopworkbooks.com/"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Who actually writes it?", "acceptedAnswer": {"@type": "Answer", "text": "We do. We draft with AI tools, which is how we move fast and keep the cost low, then we edit every page by hand against your own posts. The expertise is yours throughout, and nothing is published until you have read it and said yes. Photos come from your own posts where they matter, and some illustrations are made with AI; the agreement says which."}}, {"@type": "Question", "name": "What does it cost me?", "acceptedAnswer": {"@type": "Answer", "text": "The one-time $199 a book is our pick: you pay once and keep every sale. If you'd rather pay nothing upfront, we split each sale 50/50 instead. The first chapter is free either way, so you can read it before you choose."}}, {"@type": "Question", "name": "Who owns the book and my content?", "acceptedAnswer": {"@type": "Answer", "text": "Your content stays yours, always, and the finished book is your book. On the 50/50 deal it sells through our shared page while we work together, and if you want out, it comes down. With the $199 it's all yours once paid."}}, {"@type": "Question", "name": "How and when do I get paid?", "acceptedAnswer": {"@type": "Answer", "text": "On every sale, automatically. Whop, the store, puts your share straight into your own Whop balance, and you withdraw it to your bank whenever you like without asking us. Your share is all of each sale with the $199, or half on the 50/50 deal. We are happy to discuss the split before we start."}}, {"@type": "Question", "name": "How long does it take?", "acceptedAnswer": {"@type": "Answer", "text": "A free sample chapter within a few days. A full first draft in about two weeks, then however long your revisions take."}}, {"@type": "Question", "name": "What if I don't like it?", "acceptedAnswer": {"@type": "Answer", "text": "Then it does not get published. That is why the first chapter is free and why nothing moves without your approval. You are never committed to something you have not read."}}]}</script>
@@ -219,22 +219,23 @@
     <h2 class="section-title">What a book could earn you</h2>
     <p class="section-sub">One more way to earn from what you already post, next to brand deals. Pick your numbers and see the math.</p>
     <div class="earn">
+      <p class="earn-real"><strong>Based on a real launch:</strong> Bridget's reel about her book got 2,102 views, and 6 people bought it. That's about 3 buyers for every 1,000 views.</p>
       <div class="earn-inputs">
-        <label class="earn-field"><span>Your followers</span>
-          <select id="earn-f"><option value="2000">2,000</option><option value="5000">5,000</option><option value="10000">10,000</option><option value="20000" selected>20,000</option><option value="50000">50,000</option><option value="100000">100,000</option><option value="150000">150,000</option></select></label>
+        <label class="earn-field"><span>Views per reel</span>
+          <select id="earn-f"><option value="2000">2,000</option><option value="5000">5,000</option><option value="10000" selected>10,000</option><option value="20000">20,000</option><option value="50000">50,000</option><option value="100000">100,000</option><option value="150000">150,000</option></select></label>
         <label class="earn-field"><span>Book price</span>
           <select id="earn-p"><option value="15">$15</option><option value="19" selected>$19</option><option value="24">$24</option><option value="29">$29</option></select></label>
       </div>
       <table class="earn-table">
-        <thead><tr><th scope="col">If this many followers buy</th><th scope="col">Sales</th><th scope="col"><a href="#deal">You keep, <span class="earn-fee">$199</span> option</a></th><th scope="col"><a href="#deal">You keep, 50/50</a></th></tr></thead>
+        <thead><tr><th scope="col">If you post about it</th><th scope="col">Sales</th><th scope="col"><a href="#deal">You earn, <span class="earn-fee">$199</span> option</a></th><th scope="col"><a href="#deal">You earn, 50/50</a></th></tr></thead>
         <tbody id="earn-rows" aria-live="polite">
-          <tr data-r="0.001"><th scope="row">1 in 1,000</th><td></td><td></td><td></td></tr>
-          <tr data-r="0.003"><th scope="row">3 in 1,000</th><td></td><td></td><td></td></tr>
-          <tr data-r="0.01"><th scope="row">1 in 100</th><td></td><td></td><td></td></tr>
+          <tr data-n="1"><th scope="row">1 reel</th><td></td><td></td><td></td></tr>
+          <tr data-n="3"><th scope="row">3 reels</th><td></td><td></td><td></td></tr>
+          <tr data-n="6"><th scope="row">6 reels</th><td></td><td></td><td></td></tr>
         </tbody>
       </table>
       <p class="earn-even" id="earn-even"></p>
-      <p class="earn-note">This is an example, not a promise. How many people buy depends on your audience, the topic and how often you share the book. "You keep" is after store fees, modelled at about 6%, and for the <span class="earn-fee">$199</span> option it's after the fee is paid back. A book has no stock to manage, so sales can keep coming in after the launch.</p>
+      <p class="earn-note">Worked out at Bridget's rate of 6 buyers per 2,102 views. Your audience and topic will move it up or down. Earnings are after store fees of about 6%. The <span class="earn-fee">$199</span> option is a one-time fee on top, and every sale after it is yours. A book has no stock to manage, so it can keep selling long after the launch.</p>
     </div>
     <div class="earn-cta"><a href="#apply" class="btn deal-cta">Get a free chapter</a></div>
   </section>
@@ -423,8 +424,8 @@
   </div>
 </footer>
 
-<script src="/script.js?v=20261122g"></script>
-<script src="/untie.js?v=20261122g" defer></script>
-<script src="/shelf.js?v=20261122g" defer></script>
+<script src="/script.js?v=20261122h"></script>
+<script src="/untie.js?v=20261122h" defer></script>
+<script src="/shelf.js?v=20261122h" defer></script>
 </body>
 </html>

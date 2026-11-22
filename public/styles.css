@@ -437,7 +437,7 @@ a { color: var(--rose-deep); }
 .earn-table thead a { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
 .earn-table td small { display: block; font-size: 11.5px; font-weight: 500; }
 .earn-even { font-size: 15px; font-weight: 600; color: var(--plum); margin: 14px 0 0; }
-.earn-real { font-size: 14.5px; color: var(--plum); margin: 12px 0 10px; }
+.earn-real { font-size: 15px; color: var(--plum); margin: 0 0 18px; }
 .earn-note { font-size: 13.5px; color: var(--soft); margin: 16px 0 0; line-height: 1.55; }
 @media (max-width: 640px) {
   .earn { padding: 18px 14px; }
