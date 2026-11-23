@@ -33,7 +33,7 @@ def page(path, lang, title, body):
     h = head.replace('<html lang="en">', '<html lang="%s">' % lang)
     s = (h + '<title>%s</title>\n<meta name="robots" content="noindex">\n' % title + head_rest
          + '<body>\n' + header + '\n<main class="section narrow legal">\n' + body.strip('\n') + '\n</main>\n\n'
-         + footer + '\n' + script_tag + '\n<script src="/promo.js?v=20261122p" defer></script>\n</body>\n</html>\n')
+         + footer + '\n' + script_tag + '\n</body>\n</html>\n')
     if lang == 'pl':
         s = s.replace('<header class="nav">', '<header class="nav" lang="en">', 1).replace('<footer class="footer">', '<footer class="footer" lang="en">', 1)
     wr(path, s)
