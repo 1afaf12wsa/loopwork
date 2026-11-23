@@ -712,3 +712,6 @@ a { color: var(--rose-deep); }
   .js-shelf:not(:has(.is-open, .book3d:focus-visible, .shelf-card:focus-within))::after { opacity: 0; }
   .js-shelf:not(:has(.is-open, .book3d:focus-visible, .shelf-card:focus-within)) .slot-label { opacity: 1; }
 }
+
+/* while a book is open, the faded plaques must not catch clicks meant for the open book or its card */
+.bookcase:has(.book3d.is-open, .book3d:focus-visible, .shelf-card:focus-within) .slot-label { pointer-events: none; }

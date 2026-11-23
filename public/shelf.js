@@ -31,16 +31,21 @@
     return true;
   }
 
+  // touchscreen laptops report a mouse, so remember what the last press was: a finger gets the sheet too
+  let lastPointer = 'mouse';
+  document.addEventListener('pointerdown', (e) => { lastPointer = e.pointerType; }, true);
+  const useSheet = () => sheetMode.matches || lastPointer === 'touch';
+
   books.forEach((book) => {
     book.addEventListener('click', (e) => {
-      if (!sheetMode.matches) return;
+      if (!useSheet()) return;
       if (openSheet(book.dataset.k)) e.preventDefault();
     });
   });
   document.querySelectorAll('.slot-label.is-link').forEach((label) => {
     label.addEventListener('click', () => {
       const k = label.dataset.k;
-      if (sheetMode.matches) { openSheet(k); return; }
+      if (useSheet()) { openSheet(k); return; }
       const book = document.querySelector('.book3d[data-k="' + k + '"]');
       if (book) book.click();
     });
@@ -84,8 +89,24 @@
     if (inside) { clearTimeout(closeTimer); closeTimer = null; return; }
     if (!closeTimer) closeTimer = setTimeout(() => { closeTimer = null; setOpen(null); }, 120);
   });
-  document.addEventListener('pointerleave', () => { clearTimeout(closeTimer); setOpen(null); });
-  window.addEventListener('scroll', () => { if (openBook && zoomMode.matches) { clearTimeout(closeTimer); setOpen(null); } }, { passive: true });
+  const closeNow = () => { clearTimeout(closeTimer); closeTimer = null; setOpen(null); };
+  // the mouse leaves the browser window, the page scrolls, or the window drops below 1000px: close
+  document.documentElement.addEventListener('mouseleave', closeNow);
+  window.addEventListener('blur', closeNow);
+  window.addEventListener('scroll', () => { if (openBook && zoomMode.matches) closeNow(); }, { passive: true });
+  zoomMode.addEventListener('change', closeNow);
+  // keyboard: Escape closes; tabbing to another book or card closes the one the mouse opened
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    closeNow();
+    const f = document.activeElement;
+    if (f && (f.classList.contains('book3d') || f.closest('.shelf-card'))) f.blur();
+  });
+  document.addEventListener('focusin', (e) => {
+    if (!openBook) return;
+    const inOpen = openBook.contains(e.target) || (cardOf(openBook) && cardOf(openBook).contains(e.target));
+    if (!inOpen) closeNow();
+  });
 
   sheet.querySelector('.ss-close').addEventListener('click', () => sheet.close());
   sheet.addEventListener('click', (e) => {
