@@ -1,12 +1,12 @@
 // Bookshelf.
 // Desktop (a mouse): hovering a book opens it, zooms it forward and shows its info card (all CSS).
-// Phones and touch screens: a tap on a book or its plaque opens a sheet from the bottom of the
+// Phones, touch screens and windows under 1000px: a tap on a book or its plaque opens a sheet from the bottom of the
 // screen with the cover, an inside page and the same info card. A book's link is then one tap away.
 (function setupShelf() {
   const sheet = document.querySelector('.shelf-sheet');
   const books = document.querySelectorAll('.book3d');
   if (!books.length || !sheet || typeof sheet.showModal !== 'function') return;
-  const sheetMode = window.matchMedia('(hover: none), (max-width: 600px)');
+  const sheetMode = window.matchMedia('(hover: none), (max-width: 999px)');
   const art = sheet.querySelector('.ss-art');
   const body = sheet.querySelector('.ss-body');
 
