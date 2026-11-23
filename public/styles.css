@@ -695,3 +695,8 @@ a { color: var(--rose-deep); }
   .bookcase:has(.book3d.is-open)::after { opacity: 1; }
   .bookcase:has(.book3d.is-open) .slot-label { opacity: 0; }
 }
+
+/* desktop: a light blur on the shelf behind the open book (the book and its card sit above this layer) */
+@media (hover: hover) and (min-width: 1000px) {
+  .bookcase::after { background: rgba(34, 18, 10, .38); -webkit-backdrop-filter: blur(2.5px); backdrop-filter: blur(2.5px); }
+}
