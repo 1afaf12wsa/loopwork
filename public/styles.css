@@ -700,3 +700,15 @@ a { color: var(--rose-deep); }
 @media (hover: hover) and (min-width: 1000px) {
   .bookcase::after { background: rgba(34, 18, 10, .38); -webkit-backdrop-filter: blur(2.5px); backdrop-filter: blur(2.5px); }
 }
+
+/* desktop with shelf.js: plain :hover no longer opens a book (the script's .is-open does), so only one is ever open */
+@media (hover: hover) and (min-width: 1000px) {
+  .js-shelf .book3d:hover:not(.is-open):not(:focus-visible) { opacity: 0; z-index: 3; transform: none; }
+  .js-shelf .book3d:hover:not(.is-open):not(:focus-visible) .b3-cover { transform: none; }
+  .js-shelf .book3d:hover:not(.is-open):not(:focus-visible) + .shelf-card { opacity: 0; visibility: hidden; transform: translateY(8px); }
+  .js-shelf:has(.book3d[data-k="dog"]:hover:not(.is-open):not(:focus-visible)) .empty[data-k="dog"],
+  .js-shelf:has(.book3d[data-k="reset"]:hover:not(.is-open):not(:focus-visible)) .empty[data-k="reset"],
+  .js-shelf:has(.book3d[data-k="yours"]:hover:not(.is-open):not(:focus-visible)) .empty[data-k="yours"] { opacity: 0; }
+  .js-shelf:not(:has(.is-open, .book3d:focus-visible, .shelf-card:focus-within))::after { opacity: 0; }
+  .js-shelf:not(:has(.is-open, .book3d:focus-visible, .shelf-card:focus-within)) .slot-label { opacity: 1; }
+}

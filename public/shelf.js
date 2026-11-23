@@ -50,9 +50,14 @@
   // and closes it only once the mouse has left both.
   const zoomMode = window.matchMedia('(hover: hover) and (min-width: 1000px)');
   let openBook = null, closeTimer = null;
+  // On desktop the script alone decides which book is open (CSS :hover is switched off under .js-shelf),
+  // so two books can never be open at once.
+  document.querySelectorAll('.bookcase').forEach((bc) => bc.classList.add('js-shelf'));
   const cardOf = (b) => document.querySelector('.shelf-card[data-k="' + b.dataset.k + '"]');
   function rectsOf(b) {
-    const parts = [b, cardOf(b), ...b.querySelectorAll('.b3-page, .b3-front, .b3-inner, .yours-page')];
+    // Only what you can see: the pages, the open cover and the card. (The book's own box is bigger
+    // than its visible pages once it is scaled, so it is left out.)
+    const parts = [cardOf(b), ...b.querySelectorAll('.b3-page, .b3-inner, .yours-page')];
     return parts.filter(Boolean).map((el) => el.getBoundingClientRect()).filter((r) => r.width > 0);
   }
   function setOpen(b) {
