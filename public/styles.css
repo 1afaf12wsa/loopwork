@@ -687,3 +687,11 @@ a { color: var(--rose-deep); }
 .ss-art .ss-yours { width: 44%; max-width: 190px; aspect-ratio: 2 / 3; border-radius: 4px; display: flex; align-items: center; justify-content: center; background: #efe6d3; outline: 1px solid rgba(176, 138, 62, .6); outline-offset: -10px; font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 600; color: #a8853e; }
 .ss-art:empty { display: none; }
 @media (prefers-reduced-motion: reduce) { .book3d, .shelf-card, .bookcase::after { transition: none !important; } .shelf-sheet[open] { animation: none; } }
+
+/* desktop: shelf.js keeps a book .is-open while the mouse is anywhere over the open book or its card */
+@media (hover: hover) and (min-width: 1000px) {
+  .book3d.is-open { opacity: 1; z-index: 8; transform: scale(1.9); }
+  .book3d.is-open + .shelf-card { opacity: 1; visibility: visible; transform: none; transition: opacity .3s ease .45s, transform .3s ease .45s, visibility 0s; }
+  .bookcase:has(.book3d.is-open)::after { opacity: 1; }
+  .bookcase:has(.book3d.is-open) .slot-label { opacity: 0; }
+}
